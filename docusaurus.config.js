@@ -10,7 +10,7 @@ module.exports = {
     themeConfig: {
         colorMode: {
             defaultMode: "light",
-            disableSwitch: false,
+            disableSwitch: true,
             respectPrefersColorScheme: false,
         },
         prism: {
@@ -21,7 +21,7 @@ module.exports = {
             title: "مستندات نیکاس",
             logo: {
                 alt: "Logo",
-                src: "img/logo.png",
+                src: "img/Logo.jpg",
             },
             items: [
                 {

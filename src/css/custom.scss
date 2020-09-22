@@ -1,0 +1,116 @@
+@import "font";
+
+:root {
+    --ifm-color-primary: #07bf6f;
+    --ifm-color-primary-dark: #06ac64;
+    --ifm-color-primary-darker: #06a25e;
+    --ifm-color-primary-darkest: #05864e;
+    --ifm-color-primary-light: #08d27a;
+    --ifm-color-primary-lighter: #08dc80;
+    --ifm-color-primary-lightest: #0bf690;
+    --ifm-code-font-size: 95%;
+    --ifm-link-hover-decoration: none;
+    --ifm-font-family-base: Vazir, sans-serif;
+    --ifm-global-radius: 10px;
+}
+
+html[data-theme="dark"] {
+    --ifm-background-surface-color: #27293d;
+    --ifm-background-color: #1e1e2e;
+}
+
+.footer--dark {
+    --ifm-footer-background-color: #27293d;
+}
+
+.docusaurus-highlight-code-line {
+    background-color: rgb(72, 77, 91);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+}
+
+.rtl {
+    direction: rtl !important;
+}
+
+.ltr {
+    direction: ltr !important;
+}
+
+.text-align-left {
+    text-align: left !important;
+}
+
+.contents__link {
+    font-family: Vazir, sans-serif;
+}
+
+.admonition-heading h5:not(span) {
+    color: transparent;
+}
+
+blockquote p {
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+.table-of-contents__left-border {
+    border-left: none !important;
+    border-right-color: var(--ifm-toc-border-color);
+    border-right-style: dashed;
+    border-right-width: 1px;
+}
+
+.table-of-contents__link {
+    transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.2s;
+}
+
+.menu__link {
+    transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.2s;
+}
+
+.markdown {
+    h3 {
+        color: var(--ifm-color-primary);
+    }
+
+    p {
+        direction: rtl;
+        text-align: justify;
+        text-align-last: right;
+
+        img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #56d29b;
+        }
+    }
+}
+
+.hash-link {
+    opacity: 0;
+    position: absolute;
+    margin-right: -1.5rem;
+    padding-left: 15rem;
+}
+
+.footer__logo {
+    max-width: 20rem;
+}
+
+.navbar__inner {
+    flex-direction: row-reverse;
+}
+
+.navbar__items {
+    flex-direction: row-reverse;
+}
+
+.navbar__logo {
+    margin-right: unset;
+    margin-left: 0.5rem;
+}

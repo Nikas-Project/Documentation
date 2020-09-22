@@ -23,5 +23,13 @@ Deploy:
   script:
     - git config --global user.name "${GH_NAME}"
     - git config --global user.email "${GH_EMAIL}"
-    - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
-    - yarn && GIT_USER="${GH_USER}" yarn deploy
+    - mkdir -p ~/.ssh
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+    - echo "${{ secrets.GH_PAGES_DEPLOY }}" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - cat <<EOT >> ~/.ssh/config
+    - Host github.com
+    - HostName github.com
+    - IdentityFile ~/.ssh/id_rsa
+    - EOT
+    - GIT_USER="${GH_USER}" CURRENT_BRANCH=master USE_SSH=true yarn run deploy

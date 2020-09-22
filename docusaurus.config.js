@@ -1,7 +1,7 @@
 module.exports = {
-    title: "فرم گیر",
-    tagline: "مستندات فرم گیر",
-    url: "https://formg.ir",
+    title: "نیکاس",
+    tagline: "مستندات نیکاس",
+    url: "https://nikasproject.ir",
     baseUrl: "/",
     onBrokenLinks: "throw",
     favicon: "img/favicon.ico",
@@ -9,8 +9,8 @@ module.exports = {
     projectName: "documentation",
     themeConfig: {
         colorMode: {
-            defaultMode: "dark",
-            disableSwitch: true,
+            defaultMode: "light",
+            disableSwitch: false,
             respectPrefersColorScheme: false,
         },
         prism: {
@@ -18,19 +18,14 @@ module.exports = {
             darkTheme: require("prism-react-renderer/themes/dracula"),
         },
         navbar: {
-            title: "مستندات فرم گیر",
+            title: "مستندات نیکاس",
             logo: {
                 alt: "Logo",
                 src: "img/logo.png",
             },
             items: [
                 {
-                    href: "http://gsm.ir",
-                    label: "حساب کاربری",
-                    position: "right",
-                },
-                {
-                    href: "http://gsm.ir",
+                    href: "https://github.com/Nikas-Project",
                     label: "گیت هاب",
                     position: "right",
                 },
@@ -39,10 +34,10 @@ module.exports = {
         footer: {
             style: "dark",
             logo: {
-                alt: "Arash Hatami",
+                alt: "Nikas ©",
                 src: "img/logo-footer.png",
             },
-            copyright: `.:: Designed For Better World ::.`,
+            copyright: `.:: Designed For Better World - Nikas © ::.`,
         },
     },
     presets: [
@@ -53,12 +48,12 @@ module.exports = {
                     sidebarPath: require.resolve("./sidebars.js"),
                     routeBasePath: "/",
                     editUrl:
-                        "https://github.com/Formgir/Documentation/tree/master/",
+                        "https://github.com/Nikas-Project/Documentation/tree/master/",
                 },
                 blog: {
                     showReadingTime: true,
                     editUrl:
-                        "https://github.com/Formgir/Documentation/tree/master/blog/",
+                        "https://github.com/Nikas-Project/Documentation/tree/master/blog/",
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.scss"),

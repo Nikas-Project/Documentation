@@ -3,8 +3,25 @@ image: node:latest
 cache:
   paths:
     - node_modules/
+    - .yarn
 
-test:
+stages:
+  - build
+  - deploy
+
+before_script:
+  - yarn config set cache-folder .yarn
+  - yarn install
+
+Build:
+  stage: build
   script:
-    - npm install
-    - npm run build
+    - yarn build
+
+Deploy:
+  stage: deploy
+  script:
+    - git config --global user.name "${GH_NAME}"
+    - git config --global user.email "${GH_EMAIL}"
+    - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+    - yarn && GIT_USER="${GH_NAME}" yarn deploy

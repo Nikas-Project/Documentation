@@ -25,7 +25,7 @@ Deploy:
     - git config --global user.email "${GH_EMAIL}"
     - mkdir -p ~/.ssh
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
-    - echo "${{ secrets.GH_PAGES_DEPLOY }}" > ~/.ssh/id_rsa
+    - echo "${GH_PAGES_DEPLOY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - cat <<EOT >> ~/.ssh/config
     - Host github.com

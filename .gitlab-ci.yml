@@ -1,8 +1,8 @@
 image: node:latest
 
 variables:
-  GIT_USER: hatamiarash7
-  CURRENT_BRANCH: master
+  GIT_USER: "hatamiarash7"
+  CURRENT_BRANCH: "master"
   USE_SSH: "true"
 
 cache:

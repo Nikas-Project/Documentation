@@ -27,7 +27,7 @@ Deploy:
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
     - echo "${GH_PAGES_DEPLOY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
-    - echo -e "Host github.com\HostName github.com\nIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+    - echo -e "Host github.com\nHostName github.com\nIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
     - cat ~/.ssh/known_hosts
     - cat ~/.ssh/id_rsa
     - cat ~/.ssh/config

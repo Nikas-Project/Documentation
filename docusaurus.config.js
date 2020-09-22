@@ -2,11 +2,11 @@ module.exports = {
     title: "نیکاس",
     tagline: "مستندات نیکاس",
     url: "https://nikasproject.ir",
-    baseUrl: "/",
+    baseUrl: "/Documentation/",
     onBrokenLinks: "throw",
     favicon: "img/favicon.ico",
-    organizationName: "formgir",
-    projectName: "documentation",
+    organizationName: "Nikas-Project",
+    projectName: "Documentation",
     themeConfig: {
         colorMode: {
             defaultMode: "light",

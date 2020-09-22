@@ -2,7 +2,7 @@ module.exports = {
     title: "نیکاس",
     tagline: "مستندات نیکاس",
     url: "https://nikasproject.ir",
-    baseUrl: "/Documentation/",
+    baseUrl: "/",
     onBrokenLinks: "throw",
     favicon: "img/favicon.ico",
     organizationName: "Nikas-Project",

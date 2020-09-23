@@ -15,7 +15,7 @@ variables:
 cache:
   paths:
     - node_modules/
-    - .yarn
+    - ~/.yarn
 
 stages:
   - deploy
@@ -30,7 +30,7 @@ deploy:
     - echo "${GH_PAGES_DEPLOY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - echo -e "Host github.com\n\tHostName github.com\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
-    - yarn config set cache-folder .yarn
+    - yarn config set cache-folder ~/.yarn
     - yarn install && yarn build
     - yarn run deploy
 

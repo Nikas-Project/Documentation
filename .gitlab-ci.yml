@@ -18,17 +18,7 @@ cache:
     - .yarn
 
 stages:
-  - build
   - deploy
-
-before_script:
-  - yarn config set cache-folder .yarn
-  - yarn install
-
-build:
-  stage: build
-  script:
-    - yarn build
 
 deploy:
   stage: deploy
@@ -40,6 +30,8 @@ deploy:
     - echo "${GH_PAGES_DEPLOY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - echo -e "Host github.com\n\tHostName github.com\n\tIdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+    - yarn config set cache-folder .yarn
+    - yarn install && arn build
     - yarn run deploy
 
 dependency_scanning:

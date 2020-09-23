@@ -77,7 +77,7 @@ dast:
     reports:
       dast: gl-dast-report.json
 
-spotbugs-sast:
+sast:
   stage: .pre
   variables:
     FAIL_NEVER: 1

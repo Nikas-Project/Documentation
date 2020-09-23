@@ -5,6 +5,7 @@ include:
   - template: Security/License-Scanning.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
   - template: DAST.gitlab-ci.yml
+  - template: Secret-Detection.gitlab-ci.yml
 
 variables:
   GIT_USER: "hatamiarash7"
@@ -24,12 +25,12 @@ before_script:
   - yarn config set cache-folder .yarn
   - yarn install
 
-Build:
+build:
   stage: build
   script:
     - yarn build
 
-Deploy:
+deploy:
   stage: deploy
   script:
     - git config --global user.name "${GH_NAME}"
@@ -84,3 +85,8 @@ sast:
   artifacts:
     reports:
       sast: gl-sast-report.json
+
+.secret-analyzer:
+  stage: .pre
+  variables:
+    SECRET_DETECTION_HISTORIC_SCAN: "true"

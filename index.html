@@ -9,7 +9,10 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
         />
-        <link rel="stylesheet" href="vendor/themes/vue.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"
+        />
     </head>
     <body>
         <div id="app">Please wait...</div>
@@ -20,7 +23,7 @@
                 loadSidebar: true,
                 loadNavbar: true,
                 auto2top: true,
-                homepage: "index.md",
+                homepage: "introduction.md",
                 logo: "/_media/icon.svg",
                 nameLink: "/",
                 themeColor: "#3F51B5",
@@ -29,8 +32,13 @@
                 ext: ".md",
                 notFoundPage: true,
                 topMargin: 0,
+                themeable: {
+                    readyTransition: true,
+                    responsiveTables: true,
+                },
             };
         </script>
         <script src="vendor/docsify.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
     </body>
 </html>

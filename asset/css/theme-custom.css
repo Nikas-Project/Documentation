@@ -1,0 +1,14 @@
+:root {
+    --base-font-family: "Vazir FD", Helvetica, Arial, sans-serif;
+    --cover-button-border-radius: var(--border-radius-l);
+    --cover-button-box-shadow--hover: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.cover-main img {
+    max-width: 25%;
+}
+
+.sidebar-nav li a {
+    padding-right: 15px !important;
+}

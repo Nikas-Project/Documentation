@@ -8,3 +8,7 @@
 .cover-main img {
     max-width: 25%;
 }
+
+.sidebar-nav li a {
+    padding-right: 15px !important;
+}

@@ -170,6 +170,7 @@ a > .hljs {
 
 .previous {
     float: left;
+    left: 0;
 }
 
 .next {
@@ -322,7 +323,7 @@ ul#searchresults span.teaser em {
 
 .sidebar {
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     bottom: 0;
     width: var(--sidebar-width);
@@ -367,7 +368,7 @@ ul#searchresults span.teaser em {
     width: 5px;
 }
 .sidebar-hidden .sidebar {
-    transform: translateX(calc(0px - var(--sidebar-width)));
+    transform: translateX(calc(0px + var(--sidebar-width)));
 }
 .sidebar::-webkit-scrollbar {
     background: var(--sidebar-bg);
@@ -382,13 +383,14 @@ ul#searchresults span.teaser em {
 @media only screen and (min-width: 620px) {
     .sidebar-visible .page-wrapper {
         transform: none;
-        margin-left: var(--sidebar-width);
+        margin-right: var(--sidebar-width);
     }
 }
 
 .chapter {
     list-style: none outside none;
-    padding-left: 0;
+    padding-left: 40;
+    padding-right: 0;
     line-height: 2.2em;
 }
 

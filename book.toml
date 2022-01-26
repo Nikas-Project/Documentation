@@ -3,7 +3,7 @@ authors = ["Arash Hatami"]
 language = "en"
 multilingual = true
 src = "src"
-title = "Nikas"
+title = "نیکاس"
 description = "The first Persian comment platform."
 
 [rust]

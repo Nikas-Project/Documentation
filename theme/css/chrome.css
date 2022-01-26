@@ -156,6 +156,10 @@ a > .hljs {
 
 .nav-wrapper {
     margin-top: 50px;
+    display: block;
+}
+
+.nav-wide-wrapper {
     display: none;
 }
 
@@ -178,7 +182,7 @@ a > .hljs {
     right: var(--page-padding);
 }
 
-@media only screen and (max-width: 1080px) {
+/* @media only screen and (max-width: 1080px) {
     .nav-wide-wrapper {
         display: none;
     }
@@ -194,7 +198,7 @@ a > .hljs {
     .sidebar-visible .nav-wrapper {
         display: block;
     }
-}
+} */
 
 /* Inline code */
 
@@ -379,12 +383,12 @@ ul#searchresults span.teaser em {
 }
 
 .sidebar-visible .page-wrapper {
-    transform: translateX(var(--sidebar-width));
+    transform: translateX(calc(0px - var(--sidebar-width)));
 }
 @media only screen and (min-width: 620px) {
     .sidebar-visible .page-wrapper {
         transform: none;
-        margin-right: var(--sidebar-width);
+        margin-left: var(--sidebar-width);
     }
 }
 

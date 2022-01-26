@@ -276,6 +276,7 @@ mark.fade-out {
     border-radius: 3px;
     background-color: var(--searchbar-bg);
     color: var(--searchbar-fg);
+    font-family: "Vazir FD";
 }
 #searchbar:focus,
 #searchbar.active {
@@ -472,7 +473,8 @@ ul#searchresults span.teaser em {
 
 .theme-popup {
     position: absolute;
-    left: 10px;
+    left: unset;
+    right: 45px;
     top: var(--menu-bar-height);
     z-index: 1000;
     border-radius: 4px;

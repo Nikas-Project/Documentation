@@ -1,6 +1,33 @@
 [book]
 authors = ["Arash Hatami"]
 language = "en"
-multilingual = false
+multilingual = true
 src = "src"
 title = "Nikas"
+description = "The first Persian comment platform."
+
+[rust]
+edition = "2018"
+
+[build]
+build-dir = "book"
+create-missing = false
+use-default-preprocessors = true
+
+[output.html]
+theme = "theme"
+default-theme = "dark"
+preferred-dark-theme = "navy"
+curly-quotes = true
+mathjax-support = false
+copy-fonts = true
+no-section-label = true
+git-repository-url = "https://github.com/Nikas-Project/Documentation"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/Nikas-Project/Documentation/src/master/{path}?mode=edit"
+site-url = "/"
+cname = "docs.nikasproject.ir"
+input-404 = "404.md"
+
+[output.html.print]
+enable = false

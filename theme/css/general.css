@@ -99,7 +99,7 @@ h6:target::before {
     box-sizing: border-box;
 }
 .js:not(.sidebar-resizing) .page-wrapper {
-    transition: margin-left 0.3s ease, transform 0.3s ease; /* Animation: slide away */
+    transition: margin-right 0.3s ease, transform 0.3s ease; /* Animation: slide away */
 }
 
 .content {

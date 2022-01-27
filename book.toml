@@ -24,7 +24,7 @@ copy-fonts = false
 no-section-label = true
 git-repository-url = "https://github.com/Nikas-Project/Documentation"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/Nikas-Project/Documentation/src/master/{path}?mode=edit"
+edit-url-template = "https://github.com/Nikas-Project/Documentation/edit/master/{path}?mode=edit"
 site-url = "/"
 cname = "docs.nikasproject.ir"
 input-404 = "404.md"

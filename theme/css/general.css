@@ -114,6 +114,8 @@ h6:target::before {
 }
 .content p {
     line-height: 1.45em;
+    text-align: justify;
+    text-align-last: right;
 }
 .content ol {
     line-height: 1.45em;

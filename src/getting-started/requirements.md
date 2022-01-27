@@ -32,6 +32,21 @@ sudo apt-get install python-setuptools python-virtualenv python-dev
 sudo yum install python-setuptools python-virtualenv python-devel
 ```
 
+نیازمندی های اصلی نیکاس :
+
+- Python 3.5+ (+ devel headers)
+- SQLite 3.3.8 or later
+- C compiler
+
+```bash
+# for Debian/Ubuntu
+sudo apt-get install python-dev sqlite3 build-essential
+
+# Fedora/Red Hat
+sudo yum install python-devel sqlite
+sudo yum groupinstall “Development Tools”
+```
+
 ### Docker
 
 برای نیکاس Docker Image هایی نیز ساخته شده تا از نصب ، کامپایل و راه های سنتی رها شوید. در صورتی که تمایل به استفاده از این ایمیج ها دارید باید Docker را روی سیستم خود نصب داشته باشید :

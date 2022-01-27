@@ -211,6 +211,7 @@ blockquote {
     padding: 5px 8px;
     margin: 5px;
     z-index: 1000;
+    font-family: "Vazir FD";
 }
 .tooltipped .tooltiptext {
     visibility: visible;

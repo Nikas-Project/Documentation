@@ -17,7 +17,7 @@ use-default-preprocessors = true
 [output.html]
 theme = "theme"
 default-theme = "dark"
-preferred-dark-theme = "navy"
+preferred-dark-theme = "ayu"
 curly-quotes = true
 mathjax-support = false
 copy-fonts = false

@@ -22,9 +22,15 @@ body {
 }
 
 code {
+    direction: ltr;
     font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo,
         "DejaVu Sans Mono", monospace, monospace !important;
     font-size: 0.875em; /* please adjust the ace font size accordingly in editor.js */
+}
+
+hr {
+    margin-top: 50px;
+    border-color: var(--sidebar-active);
 }
 
 /* Don't change font size in headers. */

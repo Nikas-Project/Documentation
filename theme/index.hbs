@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="{{ language }}" class="sidebar-visible no-js {{ default_theme }}" dir="rtl">
     <head>
-        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>{{ title }}</title>
         {{#if is_print }}
@@ -10,16 +9,11 @@
         {{#if base_url}}
         <base href="{{ base_url }}">
         {{/if}}
-
-
-        <!-- Custom HTML head -->
         {{> head}}
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
-
         {{#if favicon_svg}}
         <link rel="icon" href="{{ path_to_root }}favicon.svg">
         {{/if}}
@@ -33,36 +27,25 @@
         {{#if print_enable}}
         <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print">
         {{/if}}
-
-        <!-- Fonts -->
         <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
         {{#if copy_fonts}}
         <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
         {{/if}}
-
-        <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
         <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css">
         <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
         {{#each additional_css}}
         <link rel="stylesheet" href="{{ ../path_to_root }}{{ this }}">
         {{/each}}
-
         {{#if mathjax_support}}
-        <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         {{/if}}
     </head>
     <body>
-        <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "{{ path_to_root }}";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
         </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
             try {
                 var theme = localStorage.getItem('mdbook-theme');
@@ -77,8 +60,6 @@
                 }
             } catch (e) { }
         </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
@@ -89,8 +70,6 @@
             html.classList.add(theme);
             html.classList.add('js');
         </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
         <script type="text/javascript">
             var html = document.querySelector('html');
             var sidebar = 'hidden';
@@ -101,16 +80,13 @@
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
-
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 {{#toc}}{{/toc}}
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
-
         <div id="page-wrapper" class="page-wrapper">
-
             <div class="page">
                 {{> header}}
                 <div id="menu-bar-hover-placeholder"></div>
@@ -135,9 +111,7 @@
                         </button>
                         {{/if}}
                     </div>
-
                     <h1 class="menu-title">{{ book_title }}</h1>
-
                     <div class="right-buttons">
                         {{#if print_enable}}
                         <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
@@ -154,10 +128,8 @@
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         {{/if}}
-
                     </div>
                 </div>
-
                 {{#if search_enabled}}
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
@@ -170,8 +142,6 @@
                     </div>
                 </div>
                 {{/if}}
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
@@ -179,52 +149,42 @@
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
-
                 <div id="content" class="content">
                     <main>
                         {{{ content }}}
                     </main>
-
                     <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-
                         {{#previous}}
                             <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         {{/previous}}
-
                         {{#next}}
                             <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         {{/next}}
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
-
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 {{#previous}}
                     <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 {{/previous}}
-
                 {{#next}}
                     <a rel="next" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 {{/next}}
             </nav>
-
         </div>
-
         {{#if livereload}}
-        <!-- Livereload script (if served using the cli tool) -->
         <script type="text/javascript">
             var socket = new WebSocket("{{{livereload}}}");
+
             socket.onmessage = function (event) {
                 if (event.data === "reload") {
                     socket.close();
@@ -239,12 +199,8 @@
         {{/if}}
 
         {{#if google_analytics}}
-        <!-- Google Analytics Tag -->
         <script type="text/javascript">
             var localAddrs = ["localhost", "127.0.0.1", ""];
-
-            // make sure we don't activate google analytics if the developer is
-            // inspecting the book locally...
             if (localAddrs.indexOf(document.location.hostname) === -1) {
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -256,19 +212,16 @@
             }
         </script>
         {{/if}}
-
         {{#if playground_line_numbers}}
         <script type="text/javascript">
             window.playground_line_numbers = true;
         </script>
         {{/if}}
-
         {{#if playground_copyable}}
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
         {{/if}}
-
         {{#if playground_js}}
         <script src="{{ path_to_root }}ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}editor.js" type="text/javascript" charset="utf-8"></script>
@@ -276,22 +229,17 @@
         <script src="{{ path_to_root }}theme-dawn.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         {{/if}}
-
         {{#if search_js}}
         <script src="{{ path_to_root }}elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}searcher.js" type="text/javascript" charset="utf-8"></script>
         {{/if}}
-
         <script src="{{ path_to_root }}clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="{{ path_to_root }}book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
         {{#each additional_js}}
         <script type="text/javascript" src="{{ ../path_to_root }}{{this}}"></script>
         {{/each}}
-
         {{#if is_print}}
         {{#if mathjax_support}}
         <script type="text/javascript">
@@ -309,6 +257,5 @@
         </script>
         {{/if}}
         {{/if}}
-
     </body>
 </html>

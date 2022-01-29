@@ -4,3 +4,4 @@
 
 - [نیازمندی ها](requirements.md)
 - [نصب](install.md)
+- [اجرا](run.md)

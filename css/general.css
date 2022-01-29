@@ -26,6 +26,9 @@ code {
     font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo,
         "DejaVu Sans Mono", monospace, monospace !important;
     font-size: 0.875em; /* please adjust the ace font size accordingly in editor.js */
+}
+
+pre code {
     padding: 1em !important;
     border-radius: 8px;
 }

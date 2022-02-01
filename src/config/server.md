@@ -32,7 +32,6 @@ env NIKAS_SETTINGS=path/to/nikas.cfg nikas
 - [Server]()
 - [SMTP]()
 - [Guard]()
-- [Markup]()
 - [Hash]()
 - [RSS]()
 - [Admin]()
@@ -279,3 +278,24 @@ require-email = false
 با فعال کردن این گزینه کاربران مجبور می‎شوند جهت ثبت نظر آدرس ایمیل خود را نیز وارد کنند.
 
 > باید کلاینت را نیز تنظیم کنید
+
+## Hash
+
+نیکاس از توابع و الگوریتم های Hashing استفاده می کند تا آدرس ایمیل نظر دهنده را از باقی کاربران مخفی کند و در عین حال identicon ها را نیز بسازد.
+
+```ini
+[hash]
+# Default
+salt = Eeqh7co8Ohlospo9Ol6baimi # Example
+algorithm = pbkdf2
+```
+
+### salt
+
+از `salt` برای جلوگیری از حملات [Rainbow table](https://en.wikipedia.org/wiki/Rainbow_table) استفاده می‎شود.
+
+### algorithm
+
+الگورتیم Hash که می‎خواهید از آن استفاده شود. می توانید بین `hashlib` و `pbkdf2` یکی را انتخاب کنید.
+
+> تنظیمات pbkdf2 به این صورت می‎باشد : `pbkdf2:1000:6:sha1`

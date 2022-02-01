@@ -244,6 +244,70 @@ listen = http://localhost:1234/
 </blockquote>
 <p>مقادیر قابل تعریف در این بخش : <code>None</code>, <code>Lax</code>, <code>Strict</code></p>
 <h2 id="smtp"><a class="header" href="#smtp">SMTP</a></h2>
+<p>نیکاس می‎تواند از طریق ارسال ایمیل شما را از ثبت نظر های جدید اگاه کند. همچنین در ایمیل های دریافتی توانایی تایید یا حذف نظرها را نیز دارید.</p>
+<p>جهت این کار باید یک سرور ایمیل داشته باشید و به عنوان SMTP Server در نیکاس تعریف کنید.</p>
+<pre><code class="language-ini">[smtp]
+# Default
+username =
+password =
+host = localhost
+port = 587
+security = starttls
+to =
+from =
+timeout = 10
+</code></pre>
+<h3 id="username"><a class="header" href="#username">username</a></h3>
+<p>نام کاربری سرور ایمیل</p>
+<h3 id="password"><a class="header" href="#password">password</a></h3>
+<p>کلمه عبور سرور ایمیل</p>
+<blockquote>
+<p>پیشنهاد می شود یک حساب کاربری جدا برای این کار در نظر بگیرید</p>
+</blockquote>
+<h3 id="host-1"><a class="header" href="#host-1">host</a></h3>
+<p>آدرس آی پی یا دامنه سرور ایمیل</p>
+<h3 id="port"><a class="header" href="#port">port</a></h3>
+<p>پورت سرور ایمیل</p>
+<h3 id="security"><a class="header" href="#security">security</a></h3>
+<p>استفاده از اتصال ایمن و رمز شده SSL برای اتصال به سرور ایمیل. مقادیر قابل تعریف : <code>none</code>, <code>starttls</code>, <code>ssl</code>.</p>
+<blockquote>
+<p>متاسفانه پیاده سازی اعتبارسنجی گواهینامه ها در پایتون سخت تر از چیزی است که فکر می کنید. نیکاس به طور ساده و با استفاده از کتابخانه های آماده ای که وجود داره این کار رو انجام میده و در مواردی معتبر نبودن گواهینامه هارو میتونه Ignore کنه. ترجیحا از موارد معتبر استفاده کنید و حتما برای نیکاس از حساب کاربری ایمیل مجزا استفاده کنید.</p>
+</blockquote>
+<h3 id="to"><a class="header" href="#to">to</a></h3>
+<p>آدرس ایمیل مقصد که می‎خواهید برای آن هشدار ها ارسال شود</p>
+<h3 id="from"><a class="header" href="#from">from</a></h3>
+<p>آدرس فرستنده ، برای مثال : <code>Nikas &lt;nikas@domain.ir&gt;</code></p>
+<h3 id="timeout"><a class="header" href="#timeout">timeout</a></h3>
+<p>اختصاص timeout به صورت ثانیه جهت اتمام عملیات های مربوط به ایمیل مانند ارسال یا اتصال به سرور</p>
+<h2 id="guard"><a class="header" href="#guard">Guard</a></h2>
+<p>نیکاس یک سیستم داخلی جهت تشخیص و جلوگیری از اسپم نیز دارد. در این بخش می توانید آن را فعال و تنظیم نمایید. اصلی ترین حساسیت آن به صورت rate-limit بر اساس آدرس آی پی می باشد.</p>
+<pre><code class="language-ini"># Default
+[guard]
+enabled = true
+ratelimit = 2
+direct-reply = 3
+reply-to-self = false
+require-author = false
+require-email = false
+</code></pre>
+<h3 id="enabled-1"><a class="header" href="#enabled-1">enabled</a></h3>
+<p>فعال کردن سیستم ضداسپم</p>
+<h3 id="ratelimit"><a class="header" href="#ratelimit">ratelimit</a></h3>
+<p>اعمال محدودیت بر اساس تعداد نظر بر دقیقه. برای مثال <code>ratelimit = 2</code> یعنی به هر آدرس آی پی اجازه داده می شود در هر دقیقه فقط 2 نظر ارسال کند.</p>
+<h3 id="direct-reply"><a class="header" href="#direct-reply">direct-reply</a></h3>
+<p>با استفاده از این گزینه می‎توانید مشخص کنید چه تعداد نظر به صورت مستقیم به هر تاپیک ارسال شود.</p>
+<h3 id="reply-to-self"><a class="header" href="#reply-to-self">reply-to-self</a></h3>
+<p>به کاربران اجازه داده می شود تا برای نظرات خودشان پاسخی ثبت کنند. البته این مورد فقط برای وقتی است که آنها هنوز فرصت ویرایش نظر را دارند. پس از آن که مسلما هر کاربری می تواند به نظر خودش پاسخ دهد.</p>
+<h3 id="require-author"><a class="header" href="#require-author">require-author</a></h3>
+<p>با فعال کردن این گزینه کاربران مجبور به ثبت نام خود برای ارسال نظر می‎شوند.</p>
+<blockquote>
+<p>باید کلاینت را نیز تنظیم کنید</p>
+</blockquote>
+<h3 id="require-email"><a class="header" href="#require-email">require-email</a></h3>
+<p>با فعال کردن این گزینه کاربران مجبور می‎شوند جهت ثبت نظر آدرس ایمیل خود را نیز وارد کنند.</p>
+<blockquote>
+<p>باید کلاینت را نیز تنظیم کنید</p>
+</blockquote>
 
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">

@@ -115,8 +115,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="تنظیمات-سرور"><a class="header" href="#تنظیمات-سرور">تنظیمات سرور</a></h1>
-<p>فایل تنظیمات سرور نیکاس با فرمت <a href="https://en.wikipedia.org/wiki/INI_file">INI</a> در نظر گرفته شده است. در این فایل به ازای هر بخش از سرور گزینه های مورد نظر خودمان را تعریف می کنیم. فایل نمونه را در <a href="https://github.com/Nikas-Project/Server/blob/master/example.cfg">این آدرس</a> می‎توانید مشاهده کنید. این فایل بدین صورت می‎باشد :</p>
-<pre><code class="language-ini">[general]
+<p>فایل تنظیمات سرور نیکاس با فرمت <a href="https://en.wikipedia.org/wiki/INI_file">INI</a> در نظر گرفته شده است. در این فایل به ازای هر بخش از سرور گزینه های مورد نظر خودمان را تعریف می‎کنیم. فایل نمونه را در <a href="https://github.com/Nikas-Project/Server/blob/master/example.cfg">این آدرس</a> می‎توانید مشاهده کنید. این فایل بدین صورت می‎باشد :</p>
+<pre><code class="language-ini"># Default
+[general]
 dbpath = example.db
 host = https://arash-hatami.ir/
 
@@ -136,17 +137,16 @@ env NIKAS_SETTINGS=path/to/nikas.cfg nikas
 <p>حال به بررسی تنظیمات مختلف سرور می‎پردازیم :</p>
 <ul>
 <li><a href="#general">General</a></li>
-<li><a href="">Moderation</a></li>
-<li><a href="">Server</a></li>
-<li><a href="">SMTP</a></li>
-<li><a href="">Guard</a></li>
-<li><a href="">Hash</a></li>
-<li><a href="">RSS</a></li>
-<li><a href="">Admin</a></li>
-<li><a href="">Environment variables</a></li>
+<li><a href="#moderation">Moderation</a></li>
+<li><a href="#server">Server</a></li>
+<li><a href="#smtp">SMTP</a></li>
+<li><a href="#guard">Guard</a></li>
+<li><a href="#hash">Hash</a></li>
+<li><a href="#rss">RSS</a></li>
+<li><a href="#admin">Admin</a></li>
 </ul>
 <h2 id="general"><a class="header" href="#general">General</a></h2>
-<p>در این بخش تمامی تنظیمات عمومی نیکاس انجام می شود. مقدار پیشفرض آن به این شکل است :</p>
+<p>در این بخش تمامی تنظیمات عمومی نیکاس انجام می‎شود. مقدار پیشفرض آن به این شکل است :</p>
 <pre><code class="language-ini"># Default
 [general]
 dbpath = /tmp/nikas.db
@@ -157,40 +157,43 @@ notify = stdout
 log-file =
 </code></pre>
 <h3 id="dbpath"><a class="header" href="#dbpath">dbpath</a></h3>
-<p>آدرس فایل پایگاه داده SQLite3. این آدرس باید در پوشه غیرموقت باشد تا پایگاه داده شما حذف نشود</p>
+<p>آدرس فایل پایگاه داده SQLite3.</p>
+<blockquote>
+<p>این آدرس باید در پوشه غیرموقت باشد تا پایگاه داده شما حذف نشود.</p>
+</blockquote>
 <h3 id="name"><a class="header" href="#name">name</a></h3>
-<p>برای استفاده در حالتی به کار می رود که شما چند وبسایت تعریف کرده باشید. در غیر اینصورت اجباری نیست.</p>
+<p>برای استفاده در حالتی به کار می‎رود که شما چند وب‎سایت تعریف کرده باشید. در غیر اینصورت اجباری نیست.</p>
 <h3 id="host"><a class="header" href="#host">host</a></h3>
-<p>در اینجا باید وبسایت(ها) را تعریف کنید. شما جهت اجرا به حداقل یک وبسایت نیاز دارید. هدف از این بخش مسائل امنیتی بوده و به دلیل استفاده از <a href="https://developer.mozilla.org/en/docs/HTTP/Access_control_CORS">CORS</a> جهت محدود کردن نمایش نظرات در وب سایت مقصد باید آدرس وبسایت های خودتان را تعریف کنید.</p>
-<p>پیشنهاد می شود ابتدا وبسایت های HTTP را تعریف کنید ( non-SSL ).</p>
+<p>در اینجا باید وب‎سایت(ها) را تعریف کنید. شما جهت اجرا به حداقل یک وب‎سایت نیاز دارید. هدف از این بخش مسائل امنیتی بوده و به دلیل استفاده از <a href="https://developer.mozilla.org/en/docs/HTTP/Access_control_CORS">CORS</a> جهت محدود کردن نمایش نظرات در وب سایت مقصد باید آدرس وب‎سایت های خودتان را تعریف کنید.</p>
+<p>پیشنهاد می‎شود ابتدا وب‎سایت های HTTP را تعریف کنید ( non-SSL ).</p>
 <pre><code class="language-ini">[general]
 host =
     http://website.ir/
     https://website.ir/
 </code></pre>
 <blockquote>
-<p>در صورتی که نیکاس نتواند هنگام اجرای اولیه به حداقل یکی از این وبسایت ها متصل شود ، پیغام خطایی در ترمینال داده می‎شود.</p>
+<p>در صورتی که نیکاس نتواند هنگام اجرای اولیه به حداقل یکی از این وب‎سایت ها متصل شود ، پیغام خطایی در ترمینال داده می‎شود.</p>
 </blockquote>
 <h3 id="max-age"><a class="header" href="#max-age">max-age</a></h3>
-<p>بازه زمانی مجاز که به کاربران اجازه ی ویرایش یا حذف نظرات داده می شود.</p>
+<p>بازه زمانی مجاز که به کاربران اجازه ی ویرایش یا حذف نظرات داده می‎شود.</p>
 <h3 id="notify"><a class="header" href="#notify">notify</a></h3>
 <p>سیستم اعلام دریافت نظر برای نظرات جدید :</p>
 <ul>
-<li><strong>stdout</strong> : این مورد به صورت پیشفرض فعال بوده و نظرات جدید در قالب خروجی عادی در ترمینال نمایش داده می شوند</li>
+<li><strong>stdout</strong> : این مورد به صورت پیشفرض فعال بوده و نظرات جدید در قالب خروجی عادی در ترمینال نمایش داده می‎شوند</li>
 <li><strong>smtp</strong> : اعلان از طریق ایمیل برای شما ارسال خواهد شد. توجه داشته باشید که در صورت استفاده از این گزینه باید تنظیمات <a href="#smtp">SMTP</a> را نیز انجام دهید.</li>
 </ul>
 <h3 id="reply-notifications"><a class="header" href="#reply-notifications">reply-notifications</a></h3>
-<p>با استفاده از این گزینه به کاربران اجازه داده می شود تا تعیین کنند در صورت ثبت پاسخ برای نظرشان به آنها ایمیلی ارسال شود.</p>
+<p>با استفاده از این گزینه به کاربران اجازه داده می‎شود تا تعیین کنند در صورت ثبت پاسخ برای نظرشان به آنها ایمیلی ارسال شود.</p>
 <blockquote>
 <p>قبل از استفاده این مورد حتما تنظیمات مناسب را در قسمت <a href="#moderation">Moderation</a> انجام دهید تا از اسپم ها جلوگیری شود. همچنین باید تنظیمات <a href="#smtp">SMTP</a> نیز انجام شده باشد</p>
 </blockquote>
 <h3 id="log-file"><a class="header" href="#log-file">log-file</a></h3>
 <p>با استفاده از این گزینه تمامی رخداد ها با جای اینکه در خروجی ترمینال نمایش داده شوند در یک فایل ذخیره خواهند شد.</p>
 <h3 id="gravatar"><a class="header" href="#gravatar">gravatar</a></h3>
-<p>در صورتی که این گزینه را فعال کنید ، نیکاس از <a href="https://en.wikipedia.org/wiki/Gravatar">Gravatar</a> برای نمایش تصویر کاربران استفاده خواهد کرد. البته به شرطی که کاربر مورد نظر هنگام ارسال نظر آدرس ایمیل خودش رو نیز ثبت کرده باشه. در غیر اینصورت یک آیکون رندوم به آن اختصاص داده می شود.</p>
+<p>در صورتی که این گزینه را فعال کنید ، نیکاس از <a href="https://en.wikipedia.org/wiki/Gravatar">Gravatar</a> برای نمایش تصویر کاربران استفاده خواهد کرد. البته به شرطی که کاربر مورد نظر هنگام ارسال نظر آدرس ایمیل خودش رو نیز ثبت کرده باشه. در غیر اینصورت یک آیکون رندوم به آن اختصاص داده می‎شود.</p>
 <p><img src="../images/gravatar.png" alt="gravatar" /></p>
 <h2 id="moderation"><a class="header" href="#moderation">Moderation</a></h2>
-<p>در این قسمت Queue پردازش برای نظرات جدید را فعال می کنیم.</p>
+<p>در این قسمت Queue پردازش برای نظرات جدید را فعال می‎کنیم.</p>
 <pre><code class="language-ini"># Default
 [moderation]
 enabled = false
@@ -198,14 +201,14 @@ approve-if-email-previously-approved = false
 purge-after = 30d
 </code></pre>
 <h3 id="enabled"><a class="header" href="#enabled">enabled</a></h3>
-<p>فعال کردن گزینه مدیریت. بدین صورت که نظرات پس از ثبت باید توسط مدیریت تایید شوند. نظرات تایید شده به صورت عمومی نمایش داده نخواهند شد.</p>
+<p>فعال کردن گزینه مدیریت. بدین صورت که نظرات پس از ثبت باید توسط مدیریت تایید شوند. نظرات تایید نشده به صورت عمومی نمایش داده نخواهند شد.</p>
 <h3 id="approve-if-email-previously-approved"><a class="header" href="#approve-if-email-previously-approved">approve-if-email-previously-approved</a></h3>
 <p>اگر این گزینه فعال باشد ؛ در صورتی که کاربر مورد نظر با ایمیل وارد شده حداقل در 6 ماه گذشته یک نظر تایید شده داشته باشد ، نظر فعلی وی نیز خودکار تایید خواهد شد.</p>
 <blockquote>
-<p>این گزینه کاربردی است ولی اگر کاربری به طور اتفاقی آدرس ایمیل درستی را حدث بزند یا به جای فرد دیگری که آن را می شناسد نظری با آدرس ایمیل وی ثبت کند می تواند نظر اسپم در سایت نمایش دهد. <strong>پس با ریسک خودتان این گزینه را فعال نمایید</strong></p>
+<p>این گزینه کاربردی است ولی اگر کاربری به طور اتفاقی آدرس ایمیل درستی را حدس بزند یا به جای فرد دیگری که آن را می شناسد نظری با آدرس ایمیل وی ثبت کند می‎تواند نظر اسپم در سایت نمایش دهد. <strong>پس با ریسک خودتان این گزینه را فعال نمایید</strong></p>
 </blockquote>
 <h3 id="purge-after"><a class="header" href="#purge-after">purge-after</a></h3>
-<p>با استفاده از این گزینه می توانید مشخص کنید نظرات تایید نشده پس از چند روز به طور خودکار حذف شوند</p>
+<p>با استفاده از این گزینه می‎توانید مشخص کنید نظرات تایید نشده پس از چند روز به طور خودکار حذف شوند.</p>
 <h2 id="server"><a class="header" href="#server">Server</a></h2>
 <p>تنظیمات اصلی HTTP Server نیکاس در این بخش صورت می‎پذیرد.</p>
 <pre><code class="language-ini"># Default
@@ -215,7 +218,7 @@ reload = off
 profile = off
 </code></pre>
 <h3 id="listen"><a class="header" href="#listen">listen</a></h3>
-<p>آدرسی که باید سرور با آن کار کند. نیکاس از TCP/IP و UNIX domain socket پشتیبانی می‎کند</p>
+<p>آدرسی که باید سرور با آن کار کند. نیکاس از TCP/IP و UNIX domain socket پشتیبانی می‎کند.</p>
 <pre><code class="language-ini"># UNIX domain socket
 listen = unix:///tmp/nikas.sock
 # TCP/IP
@@ -230,16 +233,17 @@ listen = http://localhost:1234/
 <pre><code class="language-ini">public-endpoint = https://nikas.domain.ir
 </code></pre>
 <p>در صورتی که این مقدار خالی گذاشته شود نیکاس سعی می کند به طور خودکار آدرس را تشخیص دهد. از این مقدار وقتی استفاده کنید که آدرس عمومی با آدرس تعیین شده در <code>listen</code> متفاوت باشد.</p>
+<!-- TODO: add docker link -->
 <blockquote>
-<p>برای مثال وقتی از Docker استفاده می کنید آدرس های listen و public با یکدیگر متفاوت هستند</p>
+<p>برای مثال وقتی از Docker استفاده می‎کنید آدرس های listen و public با یکدیگر متفاوت هستند. در بخش داکر نمونه تنظیمات را مشاهده نمایید.</p>
 </blockquote>
 <h3 id="reload"><a class="header" href="#reload">reload</a></h3>
-<p>با فعال کردن این گزینه در صورتی که سورس برنامه تغییر کند ، نیکاس ریستارت می شود. فقط برای حالت توسعه مناسب است و در محیط عملیاتی Production کاربردی ندارد</p>
+<p>با فعال کردن این گزینه در صورتی که سورس برنامه تغییر کند ، نیکاس ریستارت می‎شود. فقط برای حالت توسعه مناسب است و در محیط عملیاتی Production کاربردی ندارد.</p>
 <h3 id="samesite"><a class="header" href="#samesite">samesite</a></h3>
-<p>این گزینه مقدار <code>Set-Cookie</code> را در <code>SameSite</code> تعیین می‎کند. زمانی به کار می رود که نیکاس در دامنه یکسانی هاست نشده باشد. برای مثال از <code>domain.ir</code> فراخوانی شده و در <code>comments.domain.ir</code> هسات شده است.</p>
+<p>این گزینه مقدار <code>Set-Cookie</code> را در <code>SameSite</code> تعیین می‎کند. زمانی به کار می‎رود که نیکاس در دامنه یکسانی هاست نشده باشد. برای مثال از <code>domain.ir</code> فراخوانی شده و در <code>comments.domain.ir</code> هاست شده است.</p>
 <p>به صورت پیشفرض نیکاس مقدار <code>SameSite=None</code> را برای ارتباط https و <code>SameSite=Lax</code> را برای http در نظر می‎گیرد.</p>
 <blockquote>
-<p>جهت اطلاعات بیشتر به <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">MDM: SameSite</a> مراجعه کنید</p>
+<p>جهت اطلاعات بیشتر به <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite">MDM: SameSite</a> مراجعه کنید.</p>
 </blockquote>
 <p>مقادیر قابل تعریف در این بخش : <code>None</code>, <code>Lax</code>, <code>Strict</code></p>
 <h2 id="smtp"><a class="header" href="#smtp">SMTP</a></h2>
@@ -261,7 +265,7 @@ timeout = 10
 <h3 id="password"><a class="header" href="#password">password</a></h3>
 <p>کلمه عبور سرور ایمیل</p>
 <blockquote>
-<p>پیشنهاد می شود یک حساب کاربری جدا برای این کار در نظر بگیرید</p>
+<p>پیشنهاد می‎شود یک حساب کاربری جدا برای این کار در نظر بگیرید.</p>
 </blockquote>
 <h3 id="host-1"><a class="header" href="#host-1">host</a></h3>
 <p>آدرس آی پی یا دامنه سرور ایمیل</p>
@@ -270,16 +274,16 @@ timeout = 10
 <h3 id="security"><a class="header" href="#security">security</a></h3>
 <p>استفاده از اتصال ایمن و رمز شده SSL برای اتصال به سرور ایمیل. مقادیر قابل تعریف : <code>none</code>, <code>starttls</code>, <code>ssl</code>.</p>
 <blockquote>
-<p>متاسفانه پیاده سازی اعتبارسنجی گواهینامه ها در پایتون سخت تر از چیزی است که فکر می کنید. نیکاس به طور ساده و با استفاده از کتابخانه های آماده ای که وجود داره این کار رو انجام میده و در مواردی معتبر نبودن گواهینامه هارو میتونه Ignore کنه. ترجیحا از موارد معتبر استفاده کنید و حتما برای نیکاس از حساب کاربری ایمیل مجزا استفاده کنید.</p>
+<p>متاسفانه پیاده سازی اعتبارسنجی گواهینامه ها در پایتون سخت تر از چیزی است که فکر می‎کنید. نیکاس به طور ساده و با استفاده از کتابخانه های آماده ای که وجود داره این کار رو انجام میده و در مواردی معتبر نبودن گواهینامه هارو میتونه Ignore کنه. ترجیحا از موارد معتبر استفاده کنید و حتما برای نیکاس از حساب کاربری ایمیل مجزا استفاده کنید.</p>
 </blockquote>
 <h3 id="to"><a class="header" href="#to">to</a></h3>
-<p>آدرس ایمیل مقصد که می‎خواهید برای آن هشدار ها ارسال شود</p>
+<p>آدرس ایمیل مقصد که می‎خواهید هشدار ها برای آن ارسال شود</p>
 <h3 id="from"><a class="header" href="#from">from</a></h3>
-<p>آدرس فرستنده ، برای مثال : <code>Nikas &lt;nikas@domain.ir&gt;</code></p>
+<p>آدرس فرستنده ، برای مثال : <code>&lt;Nikas &lt;nikas@domain.ir</code></p>
 <h3 id="timeout"><a class="header" href="#timeout">timeout</a></h3>
 <p>اختصاص timeout به صورت ثانیه جهت اتمام عملیات های مربوط به ایمیل مانند ارسال یا اتصال به سرور</p>
 <h2 id="guard"><a class="header" href="#guard">Guard</a></h2>
-<p>نیکاس یک سیستم داخلی جهت تشخیص و جلوگیری از اسپم نیز دارد. در این بخش می توانید آن را فعال و تنظیم نمایید. اصلی ترین حساسیت آن به صورت rate-limit بر اساس آدرس آی پی می باشد.</p>
+<p>نیکاس یک سیستم داخلی جهت تشخیص و جلوگیری از اسپم نیز دارد. در این بخش می‎توانید آن را فعال و تنظیم نمایید. اصلی ترین حساسیت آن به صورت rate-limit بر اساس آدرس آی پی می‎باشد.</p>
 <pre><code class="language-ini"># Default
 [guard]
 enabled = true
@@ -292,18 +296,20 @@ require-email = false
 <h3 id="enabled-1"><a class="header" href="#enabled-1">enabled</a></h3>
 <p>فعال کردن سیستم ضداسپم</p>
 <h3 id="ratelimit"><a class="header" href="#ratelimit">ratelimit</a></h3>
-<p>اعمال محدودیت بر اساس تعداد نظر بر دقیقه. برای مثال <code>ratelimit = 2</code> یعنی به هر آدرس آی پی اجازه داده می شود در هر دقیقه فقط 2 نظر ارسال کند.</p>
+<p>اعمال محدودیت بر اساس تعداد نظر بر دقیقه. برای مثال <code>ratelimit = 2</code> یعنی به هر آدرس آی پی اجازه داده می‎شود در هر دقیقه فقط 2 نظر ارسال کند.</p>
 <h3 id="direct-reply"><a class="header" href="#direct-reply">direct-reply</a></h3>
 <p>با استفاده از این گزینه می‎توانید مشخص کنید چه تعداد نظر به صورت مستقیم به هر تاپیک ارسال شود.</p>
 <h3 id="reply-to-self"><a class="header" href="#reply-to-self">reply-to-self</a></h3>
-<p>به کاربران اجازه داده می شود تا برای نظرات خودشان پاسخی ثبت کنند. البته این مورد فقط برای وقتی است که آنها هنوز فرصت ویرایش نظر را دارند. پس از آن که مسلما هر کاربری می تواند به نظر خودش پاسخ دهد.</p>
+<p>به کاربران اجازه داده می‎شود تا برای نظرات خودشان پاسخی ثبت کنند. البته این مورد فقط برای وقتی است که آنها هنوز فرصت ویرایش نظر را دارند. پس از آن مسلما هر کاربری می تواند به نظر خودش پاسخ دهد.</p>
 <h3 id="require-author"><a class="header" href="#require-author">require-author</a></h3>
 <p>با فعال کردن این گزینه کاربران مجبور به ثبت نام خود برای ارسال نظر می‎شوند.</p>
+<!-- TODO: add client link -->
 <blockquote>
 <p>باید کلاینت را نیز تنظیم کنید</p>
 </blockquote>
 <h3 id="require-email"><a class="header" href="#require-email">require-email</a></h3>
 <p>با فعال کردن این گزینه کاربران مجبور می‎شوند جهت ثبت نظر آدرس ایمیل خود را نیز وارد کنند.</p>
+<!-- TODO: add client link -->
 <blockquote>
 <p>باید کلاینت را نیز تنظیم کنید</p>
 </blockquote>
@@ -317,7 +323,7 @@ algorithm = pbkdf2
 <h3 id="salt"><a class="header" href="#salt">salt</a></h3>
 <p>از <code>salt</code> برای جلوگیری از حملات <a href="https://en.wikipedia.org/wiki/Rainbow_table">Rainbow table</a> استفاده می‎شود.</p>
 <h3 id="algorithm"><a class="header" href="#algorithm">algorithm</a></h3>
-<p>الگورتیم Hash که می‎خواهید از آن استفاده شود. می توانید بین <code>hashlib</code> و <code>pbkdf2</code> یکی را انتخاب کنید.</p>
+<p>الگورتیم Hash که می‎خواهید از آن استفاده شود. می‎توانید بین <code>hashlib</code> و <code>pbkdf2</code> یکی را انتخاب کنید.</p>
 <blockquote>
 <p>تنظیمات pbkdf2 به این صورت می‎باشد : <code>pbkdf2:1000:6:sha1</code></p>
 </blockquote>
@@ -336,7 +342,7 @@ limit = 100
 <p>نیکاس جهت مدیریت و مشاهده نظرات یک پنل مدیریت نیز دارد که کارها را برای شما بسیار آسان می‎کند. این پنل مدیریت از آدرس <code>https://&lt;nikas-domain&gt;/admin</code> در دسترس خواهد بود.</p>
 <pre><code class="language-ini"># Default
 [admin]
-enabled = true
+enabled = false
 password =
 </code></pre>
 <h3 id="enabled-2"><a class="header" href="#enabled-2">enabled</a></h3>

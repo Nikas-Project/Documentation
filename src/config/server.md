@@ -28,14 +28,13 @@ env NIKAS_SETTINGS=path/to/nikas.cfg nikas
 حال به بررسی تنظیمات مختلف سرور می‎پردازیم :
 
 - [General](#general)
-- [Moderation]()
-- [Server]()
-- [SMTP]()
-- [Guard]()
-- [Hash]()
-- [RSS]()
-- [Admin]()
-- [Environment variables]()
+- [Moderation](#moderation)
+- [Server](#server)
+- [SMTP](#smtp)
+- [Guard](#guard)
+- [Hash](#hash)
+- [RSS](#rss)
+- [Admin](#admin)
 
 ## General
 

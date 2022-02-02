@@ -140,7 +140,6 @@ env NIKAS_SETTINGS=path/to/nikas.cfg nikas
 <li><a href="">Server</a></li>
 <li><a href="">SMTP</a></li>
 <li><a href="">Guard</a></li>
-<li><a href="">Markup</a></li>
 <li><a href="">Hash</a></li>
 <li><a href="">RSS</a></li>
 <li><a href="">Admin</a></li>
@@ -308,6 +307,58 @@ require-email = false
 <blockquote>
 <p>باید کلاینت را نیز تنظیم کنید</p>
 </blockquote>
+<h2 id="hash"><a class="header" href="#hash">Hash</a></h2>
+<p>نیکاس از توابع و الگوریتم های Hashing استفاده می کند تا آدرس ایمیل نظر دهنده را از باقی کاربران مخفی کند و در عین حال identicon ها را نیز بسازد.</p>
+<pre><code class="language-ini">[hash]
+# Default
+salt = Eeqh7co8Ohlospo9Ol6baimi # Example
+algorithm = pbkdf2
+</code></pre>
+<h3 id="salt"><a class="header" href="#salt">salt</a></h3>
+<p>از <code>salt</code> برای جلوگیری از حملات <a href="https://en.wikipedia.org/wiki/Rainbow_table">Rainbow table</a> استفاده می‎شود.</p>
+<h3 id="algorithm"><a class="header" href="#algorithm">algorithm</a></h3>
+<p>الگورتیم Hash که می‎خواهید از آن استفاده شود. می توانید بین <code>hashlib</code> و <code>pbkdf2</code> یکی را انتخاب کنید.</p>
+<blockquote>
+<p>تنظیمات pbkdf2 به این صورت می‎باشد : <code>pbkdf2:1000:6:sha1</code></p>
+</blockquote>
+<h2 id="rss"><a class="header" href="#rss">RSS</a></h2>
+<p>با استفاده از این گزینه می‎توانید برای نظرات هر صفحه یک Atom feed ایجاد کنید. کاربران می‎توانند با این فید در هر بخش یک حالت عضویت داشته باشند تا از وقایع مختلف مانند ثبت نظر جدید یا ارسال پاسخ مطلع شوند.</p>
+<pre><code class="language-ini"># Default
+[rss]
+base =
+limit = 100
+</code></pre>
+<h3 id="base"><a class="header" href="#base">base</a></h3>
+<p>آدرس پایه برای ساختن URI کامل صفحات.</p>
+<h3 id="limit"><a class="header" href="#limit">limit</a></h3>
+<p>با استفاده از این گزینه می‎توانید مشخص کنید به ازای هر تاپیک چه تعداد نظر اخیر نمایش داده شود.</p>
+<h2 id="admin"><a class="header" href="#admin">Admin</a></h2>
+<p>نیکاس جهت مدیریت و مشاهده نظرات یک پنل مدیریت نیز دارد که کارها را برای شما بسیار آسان می‎کند. این پنل مدیریت از آدرس <code>https://&lt;nikas-domain&gt;/admin</code> در دسترس خواهد بود.</p>
+<pre><code class="language-ini"># Default
+[admin]
+enabled = true
+password =
+</code></pre>
+<h3 id="enabled-2"><a class="header" href="#enabled-2">enabled</a></h3>
+<p>با این گزینه پنل مدیریت را فعال می‎کنید.</p>
+<h3 id="password-1"><a class="header" href="#password-1">password</a></h3>
+<p>در ابتدای کار و نسخه های اولیه بتا نیکاس از یک عبارت رشته ای خام ( Plain Text ) برای کلمه عبور استفاده می‎کرد که بدون شک مشکلات امنیتی فراوانی داره و اصلا توصیه نمیشه.</p>
+<p>در نسخه <a href="https://github.com/Nikas-Project/Server/releases/tag/1.1.0">1.1.0</a> از کلمات عبور Hash شده استفاده گردید که پیشرفت بهتری بود ولی همچنان گزینه مطلوبی برای این کار به حساب نمی‎آمد.</p>
+<p>در نهایت روند اعتبارسنجی به کلی تغییر یافت و از روش های جایگزین برای این مورد استفاده شد. از آنجایی که در نیکاس جهت استفاده از پنل مدیریت نیاز به تعریف حساب کاربری خاصی نداریم ، پس مسلما یک کلمه عبور ساده جهت احراز هویت کافی است. یکی از اولین راه ها استفاده از <code>SHA-256</code> خواهد بود که در سال های اخیر مشکلاتی رو نیز به همراه داشته :</p>
+<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/328.html">CWE-328</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></li>
+</ul>
+<p>از این رو <code>SHA-256</code> به کلی کنار گذاشته شد و به سراغ <a href="https://en.wikipedia.org/wiki/Argon2">Argon2</a> رفتیم. یک الگوریتم KDF که در امر رمزنگاری بسیار بهینه تر عمل می‎کند. این کتابخانه در نسخه <a href="https://github.com/Nikas-Project/Server/releases/tag/1.1.1">1.1.1</a> به نیکاس اضافه شد و هم اکنون در دسترس است.</p>
+<p>جهت ایجاد یک Hash ابتدا به وب‎سایت Argon2 به آدرس <a href="https://argon2.online">https://argon2.online</a> بروید و برای کلمه عبورتان یک Hash بسازید.</p>
+<p><img src="../images/argon2.jpg" alt="argon2" /></p>
+<p>مقدار تولید شده به صورت <code>Encoded</code> را در قسمت <code>password</code> وارد کنید.</p>
+<pre><code class="language-ini">[admin]
+enabled = true
+password = $argon2i$v=19$m=16,t=2,p=1$VGt5cWNNaWRKSzRJcmY3OA$9k9BaWvePl50/6X2fjVq9g
+</code></pre>
+<p>حال پس از رفتن به پنل مدیریت با همان کلمه عبوری که در سایت Argon2 تعریف کرده بودید می‎توانید وارد نیکاس شوید.</p>
 
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">

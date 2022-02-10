@@ -114,7 +114,82 @@
                 </script>
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1 id="تنظیمات-کلاینت"><a class="header" href="#تنظیمات-کلاینت">تنظیمات کلاینت</a></h1>
+<p>می‎توانید تنظیمات بخش کلاینت نیکاس را از طریق داده های سفارشی در تگ script انجام دهید. تنظیمات کلی به این صورت است :</p>
+<pre><code class="language-html">&lt;script data-nikas=&quot;/prefix/&quot;
+        data-nikas-id=&quot;thread-id&quot;
+        data-nikas-css=&quot;true&quot;
+        data-nikas-css-url=&quot;null&quot;
+        data-nikas-lang=&quot;ru&quot;
+        data-nikas-max-comments-top=&quot;10&quot;
+        data-nikas-max-comments-nested=&quot;5&quot;
+        data-nikas-reveal-on-click=&quot;5&quot;
+        data-nikas-avatar=&quot;true&quot;
+        data-nikas-avatar-bg=&quot;#f0f0f0&quot;
+        data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6 ...&quot;
+        data-nikas-vote=&quot;true&quot;
+        data-nikas-vote-levels=&quot;&quot;
+        data-nikas-feed=&quot;false&quot;
+        src=&quot;/prefix/js/embed.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>علاوه بر این می‎توانید قابلیت تشخیص خودکار عناوین را با شخصی سازی غیرفعال کنید. برای مثال یک عنوان دیگر به جز چیزی که در HTML ثبت شده به صفحه خود اختصاص دهید. یا اینکه Thread ID را تغییر دهید :</p>
+<pre><code class="language-html">&lt;section id=&quot;nikas-thread&quot; data-title=&quot;Hello!&quot; data-nikas-id=&quot;/path/to/resource&quot;&gt;&lt;/section&gt;
+</code></pre>
+<h2 id="شرح-تنظیمات"><a class="header" href="#شرح-تنظیمات">شرح تنظیمات</a></h2>
+<p>در ادامه به بررسی هرکدام از تنظیمات می‎پردازیم.</p>
+<h3 id="data-nikas"><a class="header" href="#data-nikas">data-nikas</a></h3>
+<p>نیکاس به صورت خودکار REST API را تشخیص می‎دهد ولی قابلیت این را دارید که اگر نیکاس را در محل متفاوتی هاست کرده باشید آن را آدرس دهی کنید :</p>
+<pre><code class="language-html">&lt;script data-nikas=&quot;/nikas&quot; src=&quot;/path/to/embed.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="data-nikas-css-url"><a class="header" href="#data-nikas-css-url">data-nikas-css-url</a></h3>
+<p>با استفاده از این گزینه می‎توانید مشخص کنید فایل استایل نیکاس از چه آدرسی دریافت شود. برای مثال از یک CDN. به صورت پیشفرض از خود API گرفته خواهد شد.</p>
+<pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-css-url=&quot;/path/to/nikas.css&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="اضافه-کردن-lazy-loading"><a class="header" href="#اضافه-کردن-lazy-loading">اضافه کردن Lazy-loading</a></h2>
+<p>می‎توانید به راحتی قابلیت Lazy-loading را به نیکاس اضافه کنید تا به هنگام اسکرول کردن روی نظرات ، به تدریج نمایش داده شوند.</p>
+<pre><code class="language-js">&lt;script type=&quot;text/javascript&quot;&gt;
+    // Lazy-load nikas only when page end is in view
+
+    function loadIsso() {
+        var script = document.createElement(&quot;script&quot;);
+
+        script.setAttribute(&quot;type&quot;, &quot;text/javascript&quot;);
+        script.setAttribute(&quot;src&quot;, &quot;/prefix/js/embed.min.js&quot;);
+
+        // add relevant data-nikas attributes here
+
+        script.setAttribute(&quot;data-nikas&quot;, &quot;/prefix/&quot;);
+        document.getElementsByTagName(&quot;head&quot;)[0].appendChild(script);
+    }
+
+    let offset = 50; // Start loading 50px before reaching bottom
+
+    function scrollBottomListener(ev) {
+        if ((window.scrollY + window.innerHeight)
+                &gt;= (document.documentElement.scrollHeight - offset)) {
+            loadNikas();
+            window.removeEventListener('scroll', scrollBottomListener);
+        }
+    }
+
+    window.onload = function() {
+      // If viewport &gt;= page height, load immediately
+      if ((window.scrollY + window.innerHeight)
+                &gt;= (document.documentElement.scrollHeight - offset)) {
+          loadNikas();
+      } else {
+          window.addEventListener('scroll', scrollBottomListener);
+      }
+    }
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>توجه داشته باشید که بارگذاری محتوای اضافه بعد از تعامل کاربر می‎توانید برای سئو مضر باشد. علاوه بر این کاربران شما ممکن است با یک حالت Jank روبرو شوند.</p>
+</blockquote>
+<blockquote>
+<p>فقط در صورتی که قصد صرفه جویی شدید در پهنای باند را دارید از این حالت استفاده کنید. در ضمن با اضافه کردن <code>async</code> در تگ <code>script</code> می‎توانید بارگذاری فایل Nikas را از حالت بلادرنگ خارج کنید.</p>
+</blockquote>
+
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                             <a rel="prev" href="../config/server.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">

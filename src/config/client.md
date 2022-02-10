@@ -54,7 +54,7 @@
 <script type="text/javascript">
     // Lazy-load nikas only when page end is in view
 
-    function loadIsso() {
+    function loadNikas() {
         var script = document.createElement("script");
 
         script.setAttribute("type", "text/javascript");

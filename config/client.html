@@ -120,7 +120,6 @@
         data-nikas-id=&quot;thread-id&quot;
         data-nikas-css=&quot;true&quot;
         data-nikas-css-url=&quot;null&quot;
-        data-nikas-lang=&quot;ru&quot;
         data-nikas-max-comments-top=&quot;10&quot;
         data-nikas-max-comments-nested=&quot;5&quot;
         data-nikas-reveal-on-click=&quot;5&quot;
@@ -145,6 +144,55 @@
 <p>با استفاده از این گزینه می‎توانید مشخص کنید فایل استایل نیکاس از چه آدرسی دریافت شود. برای مثال از یک CDN. به صورت پیشفرض از خود API گرفته خواهد شد.</p>
 <pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-css-url=&quot;/path/to/nikas.css&quot;&gt;&lt;/script&gt;
 </code></pre>
+<h3 id="data-nikas-css"><a class="header" href="#data-nikas-css">data-nikas-css</a></h3>
+<p>با این گزینه می‎توانید از اضافه شدن خودکار فایل CSS نیکاس به بدنه HTML خود جلوگیری کنید.</p>
+<pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-css=&quot;false&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>این مورد وقتی کاربرد دارد که مثلا بخواهید با استفاده از گزینه قبل فایل CSS را از یک CDN یا جای دیگر بارگذاری کنید.</p>
+<h3 id="data-nikas-max-comments-top"><a class="header" href="#data-nikas-max-comments-top">data-nikas-max-comments-top</a></h3>
+<p>با استفاده از این گزینه می‎توانید مشخص کنید چه تعداد نظر نمایش داده شوند و باقی آن ها مخفی شده تا با دکمه مربوطه نمایش داده شوند.</p>
+<p>اگر قصد دارید تمام نظرات نمایش داده شوند مقدار <code>inf</code> را استفاده کنید. همچنین برای مخفی کردن پیشفرض نظرات این مقدار را برابر <code>0</code> قرار دهید.</p>
+<h3 id="data-nikas-max-comments-nested"><a class="header" href="#data-nikas-max-comments-nested">data-nikas-max-comments-nested</a></h3>
+<p>این گزینه نیز همانند مورد قبل عمل خواهد کرد با این تفاوت که پاسخ ها را مدیریت خواهد کرد.</p>
+<h3 id="data-nikas-reveal-on-click"><a class="header" href="#data-nikas-reveal-on-click">data-nikas-reveal-on-click</a></h3>
+<p>با تنظیم کردن این مقدار مشخص خواهید کرد که پس از کلیک روی دکمه مربوطه ، هر بار چه تعداد نظر نمایش داده شود.</p>
+<h3 id="data-nikas-avatar"><a class="header" href="#data-nikas-avatar">data-nikas-avatar</a></h3>
+<p>با این گزینه می‎توانید مشخص کنید که نیکاس برای کاربران Avatar بسازد یا نه. البته در صورتی که از Gravatar استفاده کنید این بخش به طور خودکار نادیده گرفته خواهد شد.</p>
+<h3 id="data-nikas-avatar-bg"><a class="header" href="#data-nikas-avatar-bg">data-nikas-avatar-bg</a></h3>
+<p>تنظیم رنگ زمینه Avatar. هر مقدار معتبر CSS پذیرفته می‎شود.</p>
+<pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-avatar-bg=&quot;#f56d84&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;...&quot; data-nikas-avatar-bg=&quot;white&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;...&quot; data-nikas-avatar-bg=&quot;rgb(145, 210, 0)&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="data-nikas-avatar-fg"><a class="header" href="#data-nikas-avatar-fg">data-nikas-avatar-fg</a></h3>
+<p>تنظیم رنگ اصلی Avatar. حداکثر 8 رنگ قابل پذیرش است که باید با کارکتر فاصله از هم جدا شوند. رنگ های پیشفرض نیکاس از <a href="http://colrd.com/palette/19308/">این پالت</a> گرفته می‎شوند.</p>
+<blockquote>
+<p>توجه کنید که اگر کمتر از 8 رنگ تعریف کرده باشید و تعداد زوج نباشد توزیع رنگ نامناسبی خواهید داشت.</p>
+</blockquote>
+<pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="data-nikas-vote"><a class="header" href="#data-nikas-vote">data-nikas-vote</a></h3>
+<p>با این گزینه می‎توانید ویژگی رای دادن به نظرات را فعال نمایید.</p>
+<h3 id="data-nikas-vote-levels"><a class="header" href="#data-nikas-vote-levels">data-nikas-vote-levels</a></h3>
+<p>در این گزینه باید لیست مراحل امتیاز دادن به نظرات را مشخص کنید. این مقادیر باید با <code>,</code> جدا شوند یا به صورت آرایه Json ثبت شوند.</p>
+<pre><code class="language-txt">&quot;0,5,10,25,100&quot;
+
+or
+
+&quot;[-5,5,15]&quot;
+</code></pre>
+<p>برای مثال اگر مقدار این گزینه را برابر <code>&quot;3,3-&quot;</code> قرار دهید باعث می‎شود حالات زیر اتفاق بیوفتد :</p>
+<ul>
+<li>ایجاد کلاس <code>nikas-vote-level-0</code> برای نظرات با امتیاز کمتر از <code>منفی 3</code></li>
+<li>ایجاد کلاس <code>nikas-vote-level-1</code> برای نظرات با امتیاز بین <code>منفی 3</code> و <code>دو</code></li>
+<li>ایجاد کلاس <code>nikas-vote-level-2</code> برای نظرات با امتیاز <code>دو</code> و بیشتر</li>
+</ul>
+<p>می‎توانید از این کلاس ها برای ظاهرسازی مناسب نظرات استفاده کنید. برای مثال به ازای امتیاز برای آن ها از آیکون ستاره استفاده کنید.</p>
+<h3 id="data-nikas-feed"><a class="header" href="#data-nikas-feed">data-nikas-feed</a></h3>
+<p>با این گزینه لینک RSS هر Thread را فعال می‎کنید.</p>
+<blockquote>
+<p>این لینک فقط وقتی کار می‎کند که تنظیمات مربوط به RSS را در سمت سرور فعال کرده باشید.</p>
+</blockquote>
 <h2 id="اضافه-کردن-lazy-loading"><a class="header" href="#اضافه-کردن-lazy-loading">اضافه کردن Lazy-loading</a></h2>
 <p>می‎توانید به راحتی قابلیت Lazy-loading را به نیکاس اضافه کنید تا به هنگام اسکرول کردن روی نظرات ، به تدریج نمایش داده شوند.</p>
 <pre><code class="language-js">&lt;script type=&quot;text/javascript&quot;&gt;

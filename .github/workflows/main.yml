@@ -6,13 +6,18 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  IMAGE_NAME: nikasproject/documentation
+  GITHUB_IMAGE_NAME: docker.pkg.github.com/nikas-project/documentation/documentation
+  MDBOOK_VERSION: 0.4.15
+
 jobs:
-  deploy:
-    name: Deploy
+  Test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install Rust
         run: |
@@ -36,3 +41,47 @@ jobs:
         with:
           branch: gh-pages
           folder: book
+
+  Docker:
+    name: Docker
+    needs: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Get Current Date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Build image
+        run: |
+          docker build -t ${{ env.IMAGE_NAME }}:latest -t ${{ env.IMAGE_NAME }}:${{ github.sha }} -t ${{ env.GITHUB_IMAGE_NAME }}:latest --build-arg DATE_CREATED=${{ steps.date.outputs.date }} --build-arg MDBOOK_VERSION=${{ env.MDBOOK_VERSION }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
+          format: "template"
+          template: "@/contrib/sarif.tpl"
+          output: "trivy-results.sarif"
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: "trivy-results.sarif"
+
+      - name: Push to Dockerhub
+        run: |
+          docker login -u nikasproject -p "${{ secrets.DOCKERHUB_TOKEN }}"
+          docker push ${{ env.IMAGE_NAME }}:latest
+
+      - name: Push to Github
+        run: |
+          docker login -u hatamiarash7 -p "${{ secrets.GB_TOKEN }}" docker.pkg.github.com
+          docker push ${{ env.GITHUB_IMAGE_NAME }}:latest

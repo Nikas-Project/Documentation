@@ -38,7 +38,7 @@ docker build -t nikas .
 docker pull nikasproject/server
 ```
 
-سپس آن را اجرا می نمایید :
+سپس آن را اجرا می‎نمایید :
 
 ```bash
 docker run -d --rm --name nikas -p 127.0.0.1:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server
@@ -62,19 +62,19 @@ virtualenv .
 source ./bin/activate
 ```
 
-حال کتابخانه های جاوااسکریپت را با استفاده از NPM نصب می کنیم :
+حال کتابخانه های جاوااسکریپت را با استفاده از NPM نصب می‎کنیم :
 
 ```bash
 make init
 ```
 
-حال بخش frontend پروژه را میسازیم :
+حال بخش frontend پروژه را می‎سازیم :
 
 ```bash
 make js
 ```
 
-برای ساخت بخش backend نیز دستور زیر را اجرا می کنیم :
+برای ساخت بخش backend نیز دستور زیر را اجرا می‎کنیم :
 
 ```bash
 python setup.py develop

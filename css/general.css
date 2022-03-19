@@ -11,6 +11,8 @@ html {
     font-family: "Vazir FD", sans-serif;
     color: var(--fg);
     background-color: var(--bg);
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
     text-size-adjust: none;
     -webkit-text-size-adjust: none;
 }
@@ -112,10 +114,16 @@ h2 a.header {
     ); /* Compensate for the #menu-bar-hover-placeholder */
 }
 .page-wrapper {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 .js:not(.sidebar-resizing) .page-wrapper {
-    transition: margin-right 0.3s ease, transform 0.3s ease; /* Animation: slide away */
+    -webkit-transition: margin-right 0.3s ease, -webkit-transform 0.3s ease;
+    transition: margin-right 0.3s ease, -webkit-transform 0.3s ease;
+    -o-transition: margin-right 0.3s ease, transform 0.3s ease;
+    transition: margin-right 0.3s ease, transform 0.3s ease;
+    transition: margin-right 0.3s ease, transform 0.3s ease,
+        -webkit-transform 0.3s ease; /* Animation: slide away */
 }
 
 .content {
@@ -131,6 +139,7 @@ h2 a.header {
 .content p {
     line-height: 1.45em;
     text-align: justify;
+    -moz-text-align-last: right;
     text-align-last: right;
 }
 .content ol {
@@ -210,6 +219,8 @@ blockquote {
     visibility: hidden;
     color: #fff;
     background-color: #333;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
     transform: translateX(
         -50%
     ); /* Center by moving tooltip 50% of its width left */

@@ -27,7 +27,10 @@ a > .hljs {
 }
 #menu-bar {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     background-color: var(--bg);
     border-bottom-color: var(--bg);
@@ -58,6 +61,8 @@ a > .hljs {
     z-index: 10;
     line-height: var(--menu-bar-height);
     cursor: pointer;
+    -webkit-transition: color 0.5s;
+    -o-transition: color 0.5s;
     transition: color 0.5s;
 }
 @media only screen and (max-width: 420px) {
@@ -85,6 +90,8 @@ a > .hljs {
 }
 
 .left-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: 0 5px;
 }
@@ -99,9 +106,12 @@ a > .hljs {
     line-height: var(--menu-bar-height);
     text-align: center;
     margin: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
+    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
 .js .menu-title {
@@ -140,10 +150,24 @@ a > .hljs {
     max-width: 150px;
     min-width: 90px;
 
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-line-pack: center;
     align-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+
+    -webkit-transition: color 0.5s, background-color 0.5s;
+
+    -o-transition: color 0.5s, background-color 0.5s;
 
     transition: color 0.5s, background-color 0.5s;
 }
@@ -151,6 +175,8 @@ a > .hljs {
 .nav-chapters:hover {
     text-decoration: none;
     background-color: var(--theme-hover);
+    -webkit-transition: background-color 0.15s, color 0.15s;
+    -o-transition: background-color 0.15s, color 0.15s;
     transition: background-color 0.15s, color 0.15s;
 }
 
@@ -256,6 +282,8 @@ mark {
     padding: 0 3px 1px 3px;
     margin: 0 -3px -1px -3px;
     background-color: var(--search-mark-bg);
+    -webkit-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
     transition: background-color 300ms linear;
     cursor: pointer;
 }
@@ -275,7 +303,12 @@ mark.fade-out {
     width: 100%;
     margin: 5px auto 0px auto;
     padding: 10px 16px;
+    -webkit-transition: -webkit-box-shadow 300ms ease-in-out;
+    transition: -webkit-box-shadow 300ms ease-in-out;
+    -o-transition: box-shadow 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out,
+        -webkit-box-shadow 300ms ease-in-out;
     border: 1px solid var(--searchbar-border-color);
     border-radius: 3px;
     background-color: var(--searchbar-bg);
@@ -284,6 +317,7 @@ mark.fade-out {
 }
 #searchbar:focus,
 #searchbar.active {
+    -webkit-box-shadow: 0 0 3px var(--searchbar-shadow-color);
     box-shadow: 0 0 3px var(--searchbar-shadow-color);
 }
 
@@ -333,6 +367,7 @@ ul#searchresults span.teaser em {
     bottom: 0;
     width: var(--sidebar-width);
     font-size: 0.875em;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: contain;
@@ -346,7 +381,11 @@ ul#searchresults span.teaser em {
     user-select: none;
 }
 .js:not(.sidebar-resizing) .sidebar {
-    transition: transform 0.3s; /* Animation: slide away */
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s; /* Animation: slide away */
 }
 .sidebar code {
     line-height: 2em;
@@ -373,6 +412,8 @@ ul#searchresults span.teaser em {
     width: 5px;
 }
 .sidebar-hidden .sidebar {
+    -webkit-transform: translateX(calc(0px + var(--sidebar-width)));
+    -ms-transform: translateX(calc(0px + var(--sidebar-width)));
     transform: translateX(calc(0px + var(--sidebar-width)));
 }
 .sidebar::-webkit-scrollbar {
@@ -383,10 +424,14 @@ ul#searchresults span.teaser em {
 }
 
 .sidebar-visible .page-wrapper {
+    -webkit-transform: translateX(calc(0px - var(--sidebar-width)));
+    -ms-transform: translateX(calc(0px - var(--sidebar-width)));
     transform: translateX(calc(0px - var(--sidebar-width)));
 }
 @media only screen and (min-width: 620px) {
     .sidebar-visible .page-wrapper {
+        -webkit-transform: none;
+        -ms-transform: none;
         transform: none;
         margin-right: var(--sidebar-width);
     }
@@ -404,6 +449,8 @@ ul#searchresults span.teaser em {
 }
 
 .chapter li {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color: var(--sidebar-non-existant);
 }
@@ -412,6 +459,9 @@ ul#searchresults span.teaser em {
     padding: 0;
     text-decoration: none;
     color: var(--sidebar-fg);
+    -webkit-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
 }
 
 .chapter li a:hover {
@@ -427,12 +477,19 @@ ul#searchresults span.teaser em {
     display: block;
     margin-left: auto;
     padding: 0 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     opacity: 0.68;
 }
 
 .chapter li > a.toggle div {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
     transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 /* collapse the section */
@@ -446,6 +503,8 @@ ul#searchresults span.teaser em {
 }
 
 .chapter li.expanded > a.toggle div {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
 

@@ -6,6 +6,8 @@
 }
 
 #page-wrapper.page-wrapper {
+    -webkit-transform: none;
+    -ms-transform: none;
     transform: none;
     margin-left: 0px;
     overflow-y: initial;

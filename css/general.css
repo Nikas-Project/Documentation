@@ -31,7 +31,7 @@ code {
 }
 
 pre code {
-    padding: 1em !important;
+    padding: 2em 1em 1em 1em !important;
     border-radius: 8px;
 }
 
@@ -54,15 +54,19 @@ h6 code {
 .left {
     float: left;
 }
+
 .right {
     float: right;
 }
+
 .boring {
     opacity: 0.6;
 }
+
 .hide-boring .boring {
     display: none;
 }
+
 .hidden {
     display: none !important;
 }
@@ -71,6 +75,7 @@ h2,
 h3 {
     margin-top: 2.5em;
 }
+
 h4,
 h5 {
     margin-top: 2em;
@@ -113,10 +118,12 @@ h2 a.header {
         0px - var(--menu-bar-height)
     ); /* Compensate for the #menu-bar-hover-placeholder */
 }
+
 .page-wrapper {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 .js:not(.sidebar-resizing) .page-wrapper {
     -webkit-transition: margin-right 0.3s ease, -webkit-transform 0.3s ease;
     transition: margin-right 0.3s ease, -webkit-transform 0.3s ease;
@@ -131,37 +138,46 @@ h2 a.header {
     padding: 0 15px;
     padding-bottom: 50px;
 }
+
 .content main {
     margin-left: auto;
     margin-right: auto;
     max-width: var(--content-max-width);
 }
+
 .content p {
     line-height: 1.45em;
     text-align: justify;
     -moz-text-align-last: right;
     text-align-last: right;
 }
+
 .content ol {
     line-height: 1.45em;
 }
+
 .content ul {
     line-height: 1.45em;
 }
+
 .content a {
     text-decoration: none;
 }
+
 .content a:hover {
     text-decoration: underline;
 }
+
 .content img,
 .content video {
     max-width: 100%;
 }
+
 .content .header:link,
 .content .header:visited {
     color: var(--fg);
 }
+
 .content .header:link,
 .content .header:visited:hover {
     text-decoration: none;
@@ -171,23 +187,29 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
 }
+
 table td {
     padding: 3px 20px;
     border: 1px var(--table-border-color) solid;
 }
+
 table thead {
     background: var(--table-header-bg);
 }
+
 table thead td {
     font-weight: 700;
     border: none;
 }
+
 table thead th {
     padding: 3px 20px;
 }
+
 table thead tr {
     border: 1px var(--table-header-bg) solid;
 }
+
 /* Alternate background colors for rows */
 table tbody tr:nth-child(2n) {
     background: var(--table-alternate-bg);
@@ -206,10 +228,12 @@ blockquote {
 .footnote-definition + :not(.footnote-definition) {
     margin-top: 2em;
 }
+
 .footnote-definition {
     font-size: 0.9em;
     margin: 0.5em 0;
 }
+
 .footnote-definition p {
     display: inline;
 }
@@ -234,6 +258,7 @@ blockquote {
     z-index: 1000;
     font-family: "Vazir FD";
 }
+
 .tooltipped .tooltiptext {
     visibility: visible;
 }

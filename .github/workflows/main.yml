@@ -1,10 +1,24 @@
 name: CI
 
 on:
+  schedule:
+    - cron: "13 13 * * *"
   push:
     branches: [master]
+    paths:
+      - ".github/workflows/**"
+      - "src/**"
+      - "theme/**"
+      - "book.toml"
+      - "Dockerfile"
   pull_request:
     branches: [master]
+    paths:
+      - ".github/workflows/**"
+      - "src/**"
+      - "theme/**"
+      - "book.toml"
+      - "Dockerfile"
 
 env:
   IMAGE_NAME: nikasproject/documentation
@@ -18,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Rust
         run: |
@@ -56,7 +70,8 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
-      - id: github-image
+      - name: Create image name
+        id: github-image
         uses: ASzc/change-string-case-action@v2
         with:
           string: ${{ env.REGISTRY }}/${{ env.GITHUB_IMAGE_NAME }}
@@ -83,6 +98,7 @@ jobs:
           sarif_file: "trivy-results.sarif"
 
       - name: Push to Dockerhub
+        if: github.event_name != 'pull_request'
         run: |
           docker login -u hatamiarash7 -p "${{ secrets.DOCKERHUB_TOKEN }}"
           docker push ${{ env.IMAGE_NAME }}:latest

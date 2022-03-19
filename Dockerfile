@@ -1,17 +1,8 @@
 FROM rust:slim-buster AS builder
 
 ARG MDBOOK_VERSION
-ARG DATE_CREATED
 ENV MDBOOK_VERSION ${MDBOOK_VERSION:-0.4.15}
 ENV ARC="x86_64-unknown-linux-gnu"
-
-LABEL maintainer="Arash Hatami <hatamiarash7@gmail.com>"
-LABEL org.opencontainers.image.created=$DATE_CREATED
-LABEL org.opencontainers.image.authors="hatamiarash7"
-LABEL org.opencontainers.image.vendor="hatamiarash7"
-LABEL org.opencontainers.image.title="Nikas Documentation"
-LABEL org.opencontainers.image.description="The first Persian comment system"
-LABEL org.opencontainers.image.source="https://github.com/Nikas-Project/Documentation"
 
 RUN mkdir /backend
 
@@ -33,6 +24,16 @@ RUN cargo install mdbook --version "${MDBOOK_VERSION}" --target "${ARC}"
 RUN mdbook build
 
 FROM nginx:stable-alpine
+
+ARG DATE_CREATED
+
+LABEL maintainer="Arash Hatami <hatamiarash7@gmail.com>"
+LABEL org.opencontainers.image.created=$DATE_CREATED
+LABEL org.opencontainers.image.authors="hatamiarash7"
+LABEL org.opencontainers.image.vendor="hatamiarash7"
+LABEL org.opencontainers.image.title="Nikas Documentation"
+LABEL org.opencontainers.image.description="The first Persian comment system"
+LABEL org.opencontainers.image.source="https://github.com/Nikas-Project/Documentation"
 
 COPY --from=builder /backend/book /usr/share/nginx/html
 

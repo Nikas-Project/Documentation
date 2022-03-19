@@ -6,6 +6,7 @@
         "hljs",
         "mathjax",
         "mdbook",
+        "nikasproject",
         "pageview",
         "rustup",
         "scrollbox",

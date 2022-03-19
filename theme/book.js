@@ -4,7 +4,7 @@
 window.onunload = function () { };
 
 // Global variable, shared between modules
-function playground_text(playground) {
+function playground_text (playground) {
     let code_block = playground.querySelector("code");
 
     if (window.ace && code_block.classList.contains("editable")) {
@@ -15,8 +15,8 @@ function playground_text(playground) {
     }
 }
 
-(function codeSnippets() {
-    function fetch_with_timeout(url, options, timeout = 6000) {
+(function codeSnippets () {
+    function fetch_with_timeout (url, options, timeout = 6000) {
         return Promise.race([
             fetch(url, options),
             new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
@@ -40,7 +40,7 @@ function playground_text(playground) {
             });
     }
 
-    function handle_crate_list_update(playground_block, playground_crates) {
+    function handle_crate_list_update (playground_block, playground_crates) {
         // update the play buttons after receiving the response
         update_play_button(playground_block, playground_crates);
 
@@ -67,7 +67,7 @@ function playground_text(playground) {
 
     // updates the visibility of play button based on `no_run` class and
     // used crates vs ones available on http://play.rust-lang.org
-    function update_play_button(pre_block, playground_crates) {
+    function update_play_button (pre_block, playground_crates) {
         var play_button = pre_block.querySelector(".play-button");
 
         // skip if code is `no_run`
@@ -97,7 +97,7 @@ function playground_text(playground) {
         }
     }
 
-    function run_rust_code(code_block) {
+    function run_rust_code (code_block) {
         var result_block = code_block.querySelector(".result");
         if (!result_block) {
             result_block = document.createElement('code');
@@ -283,7 +283,7 @@ function playground_text(playground) {
     });
 })();
 
-(function themes() {
+(function themes () {
     var html = document.querySelector('html');
     var themeToggleButton = document.getElementById('theme-toggle');
     var themePopup = document.getElementById('theme-list');
@@ -294,19 +294,19 @@ function playground_text(playground) {
         highlight: document.querySelector("[href$='highlight.css']"),
     };
 
-    function showThemes() {
+    function showThemes () {
         themePopup.style.display = 'block';
         themeToggleButton.setAttribute('aria-expanded', true);
         themePopup.querySelector("button#" + get_theme()).focus();
     }
 
-    function hideThemes() {
+    function hideThemes () {
         themePopup.style.display = 'none';
         themeToggleButton.setAttribute('aria-expanded', false);
         themeToggleButton.focus();
     }
 
-    function get_theme() {
+    function get_theme () {
         var theme;
         try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
         if (theme === null || theme === undefined) {
@@ -316,7 +316,7 @@ function playground_text(playground) {
         }
     }
 
-    function set_theme(theme, store = true) {
+    function set_theme (theme, store = true) {
         let ace_theme;
 
         if (theme == 'coal' || theme == 'navy') {
@@ -431,7 +431,7 @@ function playground_text(playground) {
     });
 })();
 
-(function sidebar() {
+(function sidebar () {
     var html = document.querySelector("html");
     var sidebar = document.getElementById("sidebar");
     var sidebarLinks = document.querySelectorAll('#sidebar a');
@@ -439,7 +439,7 @@ function playground_text(playground) {
     var sidebarResizeHandle = document.getElementById("sidebar-resize-handle");
     var firstContact = null;
 
-    function showSidebar() {
+    function showSidebar () {
         html.classList.remove('sidebar-hidden')
         html.classList.add('sidebar-visible');
         Array.from(sidebarLinks).forEach(function (link) {
@@ -453,7 +453,7 @@ function playground_text(playground) {
 
     var sidebarAnchorToggles = document.querySelectorAll('#sidebar a.toggle');
 
-    function toggleSection(ev) {
+    function toggleSection (ev) {
         ev.currentTarget.parentElement.classList.toggle('expanded');
     }
 
@@ -461,7 +461,7 @@ function playground_text(playground) {
         el.addEventListener('click', toggleSection);
     });
 
-    function hideSidebar() {
+    function hideSidebar () {
         html.classList.remove('sidebar-visible')
         html.classList.add('sidebar-hidden');
         Array.from(sidebarLinks).forEach(function (link) {
@@ -473,7 +473,7 @@ function playground_text(playground) {
     }
 
     // Toggle sidebar
-    sidebarToggleButton.addEventListener('click', function sidebarToggle() {
+    sidebarToggleButton.addEventListener('click', function sidebarToggle () {
         if (html.classList.contains("sidebar-hidden")) {
             var current_width = parseInt(
                 document.documentElement.style.getPropertyValue('--sidebar-width'), 10);
@@ -494,12 +494,12 @@ function playground_text(playground) {
 
     sidebarResizeHandle.addEventListener('mousedown', initResize, false);
 
-    function initResize(e) {
+    function initResize (e) {
         window.addEventListener('mousemove', resize, false);
         window.addEventListener('mouseup', stopResize, false);
         html.classList.add('sidebar-resizing');
     }
-    function resize(e) {
+    function resize (e) {
         var pos = (e.clientX - sidebar.offsetLeft);
         if (pos < 20) {
             hideSidebar();
@@ -512,7 +512,7 @@ function playground_text(playground) {
         }
     }
     //on mouseup remove windows functions mousemove & mouseup
-    function stopResize(e) {
+    function stopResize (e) {
         html.classList.remove('sidebar-resizing');
         window.removeEventListener('mousemove', resize, false);
         window.removeEventListener('mouseup', stopResize, false);
@@ -551,7 +551,7 @@ function playground_text(playground) {
     }
 })();
 
-(function chapterNavigation() {
+(function chapterNavigation () {
     document.addEventListener('keydown', function (e) {
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) { return; }
         if (window.search && window.search.hasFocus()) { return; }
@@ -575,15 +575,15 @@ function playground_text(playground) {
     });
 })();
 
-(function clipboard() {
+(function clipboard () {
     var clipButtons = document.querySelectorAll('.clip-button');
 
-    function hideTooltip(elem) {
+    function hideTooltip (elem) {
         elem.firstChild.innerText = "";
         elem.className = 'fa fa-copy clip-button';
     }
 
-    function showTooltip(elem, msg) {
+    function showTooltip (elem, msg) {
         elem.firstChild.innerText = msg;
         elem.className = 'fa fa-copy tooltipped';
     }
@@ -612,7 +612,7 @@ function playground_text(playground) {
     });
 })();
 
-(function scrollToTop() {
+(function scrollToTop () {
     var menuTitle = document.querySelector('.menu-title');
 
     menuTitle.addEventListener('click', function () {
@@ -620,10 +620,10 @@ function playground_text(playground) {
     });
 })();
 
-(function controllMenu() {
+(function controllMenu () {
     var menu = document.getElementById('menu-bar');
 
-    (function controllPosition() {
+    (function controllPosition () {
         var scrollTop = document.scrollingElement.scrollTop;
         var prevScrollTop = scrollTop;
         var minMenuY = -menu.clientHeight - 50;
@@ -666,7 +666,7 @@ function playground_text(playground) {
             prevScrollTop = scrollTop;
         }, { passive: true });
     })();
-    (function controllBorder() {
+    (function controllBorder () {
         menu.classList.remove('bordered');
         document.addEventListener('scroll', function () {
             if (menu.offsetTop === 0) {

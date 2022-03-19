@@ -8,7 +8,8 @@ on:
 
 env:
   IMAGE_NAME: nikasproject/documentation
-  GITHUB_IMAGE_NAME: docker.pkg.github.com/nikas-project/documentation/documentation
+  REGISTRY: ghcr.io
+  GITHUB_IMAGE_NAME: ${{ github.repository }}/documentation:latest
   MDBOOK_VERSION: 0.4.15
 
 jobs:
@@ -49,20 +50,25 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Get Current Date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
+      - id: github-image
+        uses: ASzc/change-string-case-action@v2
+        with:
+          string: ${{ env.REGISTRY }}/${{ env.GITHUB_IMAGE_NAME }}
+
       - name: Build image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }}:latest -t ${{ env.IMAGE_NAME }}:${{ github.sha }} -t ${{ env.GITHUB_IMAGE_NAME }}:latest --build-arg DATE_CREATED=${{ steps.date.outputs.date }} --build-arg MDBOOK_VERSION=${{ env.MDBOOK_VERSION }} .
+          docker build -t ${{ env.IMAGE_NAME }}:latest -t ${{ steps.github-image.outputs.lowercase }} --build-arg DATE_CREATED=${{ steps.date.outputs.date }} --build-arg MDBOOK_VERSION=${{ env.MDBOOK_VERSION }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          image-ref: ${{ steps.github-image.outputs.lowercase }}
           exit-code: "0"
           ignore-unfixed: true
           vuln-type: "os,library"
@@ -81,7 +87,15 @@ jobs:
           docker login -u hatamiarash7 -p "${{ secrets.DOCKERHUB_TOKEN }}"
           docker push ${{ env.IMAGE_NAME }}:latest
 
-      - name: Push to Github
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1.14.1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GB_TOKEN }}
+
+      - name: Push to ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
         run: |
-          docker login -u hatamiarash7 -p "${{ secrets.GB_TOKEN }}" docker.pkg.github.com
-          docker push ${{ env.GITHUB_IMAGE_NAME }}:latest
+          docker push ${{ steps.github-image.outputs.lowercase }}

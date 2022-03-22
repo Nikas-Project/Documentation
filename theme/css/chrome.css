@@ -313,7 +313,7 @@ mark.fade-out {
     border-radius: 3px;
     background-color: var(--searchbar-bg);
     color: var(--searchbar-fg);
-    font-family: "Vazir FD";
+    font-family: Vazirmatn RD UI FD;
 }
 #searchbar:focus,
 #searchbar.active {

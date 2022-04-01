@@ -38,15 +38,15 @@ sudo yum install python-setuptools python-virtualenv python-devel
 
 نیازمندی های اصلی نیکاس :
 
-- Python 3.5+ (+ devel headers)
-- SQLite 3.3.8 or later
+-   Python 3.5+ (+ devel headers)
+-   SQLite 3.3.8 or later
 
 در صورتی که تمایل به کامپایل و اجرای نیکاس از سورس را دارید ، باید لیست زیر را نصب داشته باشید :
 
-- [Make](https://www.gnu.org/software/make/)
-- C compiler
-- [NodeJS](https://nodejs.org/en/download/)
-- [NPM](https://npmjs.org/)
+-   [Make](https://www.gnu.org/software/make/)
+-   C compiler
+-   [NodeJS](https://nodejs.org/en/download/)
+-   [NPM](https://npmjs.org/)
 
 ```bash
 # for Debian/Ubuntu

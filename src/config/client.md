@@ -3,26 +3,32 @@
 می‎توانید تنظیمات بخش کلاینت نیکاس را از طریق داده های سفارشی در تگ script انجام دهید. تنظیمات کلی به این صورت است :
 
 ```html
-<script data-nikas="/prefix/"
-        data-nikas-id="thread-id"
-        data-nikas-css="true"
-        data-nikas-css-url="null"
-        data-nikas-max-comments-top="10"
-        data-nikas-max-comments-nested="5"
-        data-nikas-reveal-on-click="5"
-        data-nikas-avatar="true"
-        data-nikas-avatar-bg="#f0f0f0"
-        data-nikas-avatar-fg="#9abf88 #5698c4 #e279a3 #9163b6 ..."
-        data-nikas-vote="true"
-        data-nikas-vote-levels=""
-        data-nikas-feed="false"
-        src="/prefix/js/embed.js"></script>
+<script
+    data-nikas="/prefix/"
+    data-nikas-id="thread-id"
+    data-nikas-css="true"
+    data-nikas-css-url="null"
+    data-nikas-max-comments-top="10"
+    data-nikas-max-comments-nested="5"
+    data-nikas-reveal-on-click="5"
+    data-nikas-avatar="true"
+    data-nikas-avatar-bg="#f0f0f0"
+    data-nikas-avatar-fg="#9abf88 #5698c4 #e279a3 #9163b6 ..."
+    data-nikas-vote="true"
+    data-nikas-vote-levels=""
+    data-nikas-feed="false"
+    src="/prefix/js/embed.js"
+></script>
 ```
 
 علاوه بر این می‎توانید قابلیت تشخیص خودکار عناوین را با شخصی سازی غیرفعال کنید. برای مثال یک عنوان دیگر به جز چیزی که در HTML ثبت شده به صفحه خود اختصاص دهید. یا اینکه Thread ID را تغییر دهید :
 
 ```html
-<section id="nikas-thread" data-title="Hello!" data-nikas-id="/path/to/resource"></section>
+<section
+    id="nikas-thread"
+    data-title="Hello!"
+    data-nikas-id="/path/to/resource"
+></section>
 ```
 
 ## شرح تنظیمات
@@ -90,7 +96,10 @@
 > توجه کنید که اگر کمتر از 8 رنگ تعریف کرده باشید و تعداد زوج نباشد توزیع رنگ نامناسبی خواهید داشت.
 
 ```html
-<script src="..." data-nikas-avatar-fg="#9abf88 #5698c4 #e279a3 #9163b6"></script>
+<script
+    src="..."
+    data-nikas-avatar-fg="#9abf88 #5698c4 #e279a3 #9163b6"
+></script>
 ```
 
 ### data-nikas-vote
@@ -111,9 +120,9 @@ or
 
 برای مثال اگر مقدار این گزینه را برابر `"3,3-"` قرار دهید باعث می‎شود حالات زیر اتفاق بیوفتد :
 
-- ایجاد کلاس `nikas-vote-level-0` برای نظرات با امتیاز کمتر از `منفی 3`
-- ایجاد کلاس `nikas-vote-level-1` برای نظرات با امتیاز بین `منفی 3` و `دو`
-- ایجاد کلاس `nikas-vote-level-2` برای نظرات با امتیاز `دو` و بیشتر
+-   ایجاد کلاس `nikas-vote-level-0` برای نظرات با امتیاز کمتر از `منفی 3`
+-   ایجاد کلاس `nikas-vote-level-1` برای نظرات با امتیاز بین `منفی 3` و `دو`
+-   ایجاد کلاس `nikas-vote-level-2` برای نظرات با امتیاز `دو` و بیشتر
 
 می‎توانید از این کلاس ها برای ظاهرسازی مناسب نظرات استفاده کنید. برای مثال به ازای امتیاز برای آن ها از آیکون ستاره استفاده کنید.
 

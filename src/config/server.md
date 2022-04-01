@@ -28,14 +28,14 @@ env NIKAS_SETTINGS=path/to/nikas.cfg nikas
 
 حال به بررسی تنظیمات مختلف سرور می‎پردازیم :
 
-- [General](#general)
-- [Moderation](#moderation)
-- [Server](#server)
-- [SMTP](#smtp)
-- [Guard](#guard)
-- [Hash](#hash)
-- [RSS](#rss)
-- [Admin](#admin)
+-   [General](#general)
+-   [Moderation](#moderation)
+-   [Server](#server)
+-   [SMTP](#smtp)
+-   [Guard](#guard)
+-   [Hash](#hash)
+-   [RSS](#rss)
+-   [Admin](#admin)
 
 ## General
 
@@ -85,8 +85,8 @@ host =
 
 سیستم اعلام دریافت نظر برای نظرات جدید :
 
-- **stdout** : این مورد به صورت پیشفرض فعال بوده و نظرات جدید در قالب خروجی عادی در ترمینال نمایش داده می‎شوند
-- **smtp** : اعلان از طریق ایمیل برای شما ارسال خواهد شد. توجه داشته باشید که در صورت استفاده از این گزینه باید تنظیمات [SMTP](#smtp) را نیز انجام دهید.
+-   **stdout** : این مورد به صورت پیشفرض فعال بوده و نظرات جدید در قالب خروجی عادی در ترمینال نمایش داده می‎شوند
+-   **smtp** : اعلان از طریق ایمیل برای شما ارسال خواهد شد. توجه داشته باشید که در صورت استفاده از این گزینه باید تنظیمات [SMTP](#smtp) را نیز انجام دهید.
 
 ### reply-notifications
 
@@ -168,6 +168,7 @@ public-endpoint = https://nikas.domain.ir
 در صورتی که این مقدار خالی گذاشته شود نیکاس سعی می کند به طور خودکار آدرس را تشخیص دهد. از این مقدار وقتی استفاده کنید که آدرس عمومی با آدرس تعیین شده در `listen` متفاوت باشد.
 
 <!-- TODO: add docker link -->
+
 > برای مثال وقتی از Docker استفاده می‎کنید آدرس های listen و public با یکدیگر متفاوت هستند. در بخش داکر نمونه تنظیمات را مشاهده نمایید.
 
 ### reload
@@ -275,6 +276,7 @@ require-email = false
 با فعال کردن این گزینه کاربران مجبور به ثبت نام خود برای ارسال نظر می‎شوند.
 
 <!-- TODO: add client link -->
+
 > باید کلاینت را نیز تنظیم کنید
 
 ### require-email
@@ -282,6 +284,7 @@ require-email = false
 با فعال کردن این گزینه کاربران مجبور می‎شوند جهت ثبت نظر آدرس ایمیل خود را نیز وارد کنند.
 
 <!-- TODO: add client link -->
+
 > باید کلاینت را نیز تنظیم کنید
 
 ## Hash
@@ -347,9 +350,9 @@ password =
 
 در نهایت روند اعتبارسنجی به کلی تغییر یافت و از روش های جایگزین برای این مورد استفاده شد. از آنجایی که در نیکاس جهت استفاده از پنل مدیریت نیاز به تعریف حساب کاربری خاصی نداریم ، پس مسلما یک کلمه عبور ساده جهت احراز هویت کافی است. یکی از اولین راه ها استفاده از `SHA-256` خواهد بود که در سال های اخیر مشکلاتی رو نیز به همراه داشته :
 
-- [CWE-327](https://cwe.mitre.org/data/definitions/327.html)
-- [CWE-328](https://cwe.mitre.org/data/definitions/328.html)
-- [CWE-916](https://cwe.mitre.org/data/definitions/916.html)
+-   [CWE-327](https://cwe.mitre.org/data/definitions/327.html)
+-   [CWE-328](https://cwe.mitre.org/data/definitions/328.html)
+-   [CWE-916](https://cwe.mitre.org/data/definitions/916.html)
 
 از این رو `SHA-256` به کلی کنار گذاشته شد و به سراغ [Argon2](https://en.wikipedia.org/wiki/Argon2) رفتیم. یک الگوریتم KDF که در امر رمزنگاری بسیار بهینه تر عمل می‎کند. این کتابخانه در نسخه [1.1.1](https://github.com/Nikas-Project/Server/releases/tag/1.1.1) به نیکاس اضافه شد و هم اکنون در دسترس است.
 

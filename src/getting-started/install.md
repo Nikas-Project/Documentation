@@ -2,9 +2,9 @@
 
 راه های مختلفی برای نصب نیکاس وجود داره :
 
-- [Python Package](#python-package)
-- [Docker](#docker)
-- [Source](#source)
+-   [Python Package](#python-package)
+-   [Docker](#docker)
+-   [Source](#source)
 
 قبل از شروع به نصب ، ابتدا صفحه [پیش نیازها](requirements.md) را مطالعه کنید.
 

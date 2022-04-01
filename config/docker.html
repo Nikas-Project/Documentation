@@ -114,7 +114,74 @@
                 </script>
                 <div id="content" class="content">
                     <main>
-                        
+                        <h1 id="کار-با-داکر"><a class="header" href="#کار-با-داکر">کار با داکر</a></h1>
+<p><img src="https://img.shields.io/pypi/v/nikas?label=Version" alt="PyPI" /> <img src="https://img.shields.io/docker/image-size/nikasproject/server" alt="Docker Image Size (latest semver)" /></p>
+<p>نیکاس به صورت کامل داکرایز شده و شما به راحتی با بهره بردن از Docker قابلیت اجرا و استفاده از اون رو دارید. ایمیج های سرور نیکاس در دو رجیستری <a href="https://github.com/Nikas-Project/Server/pkgs/container/Server%2Fserver">Github</a> و <a href="https://hub.docker.com/r/nikasproject/server">Dockerhub</a> برای شما عزیزان قرار داده شده است :</p>
+<h2 id="دریافت-ایمیج"><a class="header" href="#دریافت-ایمیج">دریافت ایمیج</a></h2>
+<p>با دستور pull می‎توانید آخرین نسخه از سرور نیکاس را دریافت نمایید :</p>
+<pre><code class="language-sh">docker pull nikasproject/server:1.1.9
+
+# Or
+
+docker pull ghcr.io/nikas-project/server/server:1.1.9
+</code></pre>
+<h2 id="اجرا"><a class="header" href="#اجرا">اجرا</a></h2>
+<p>اجرای نیکاس به یک دستور ساده انجام خواهد شد. فقط کافی است یک دایرکتوری برای آن بسازید ( برای مثال <code>opt/nikas/</code> ) و تنظیمات خود را در آن قرار دهید. سپس دستور زیر را اجرا نمایید :</p>
+<pre><code class="language-sh">docker run -d --rm --name nikas -p 0.0.0.0:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server:1.1.9
+</code></pre>
+<p>اما اجرای آن با استفاده از Docker Compose راحت تر است.</p>
+<blockquote>
+<p>جهت نصب Docker Compose به <a href="https://docs.docker.com/compose/cli-command/">این لینک</a> مراجعه کنید.</p>
+</blockquote>
+<p>ساختار فایل پیشنهادی Compose به این شکل است :</p>
+<pre><code class="language-yml">version: &quot;3.7&quot;
+
+services:
+    server:
+        image: nikasproject/server:1.1.9
+        restart: unless-stopped
+        container_name: nikas
+        environment:
+            - GID=1000
+            - UID=1000
+        volumes:
+            - ./docker/config:/config
+            - ./docker/db:/db
+        ports:
+            - 8080:8080
+</code></pre>
+<p>ساختار دایرکتوری شما به این صورت است :</p>
+<pre><code class="language-lang-none">Nikas/
+|
+├─ docker/
+|  |
+│  ├─ nikas.conf
+|  |
+│  └─ db/
+|
+└─ docker-compose.yml
+</code></pre>
+<p>و فایل نمونه تنظیمات <code>nikas.conf</code> :</p>
+<pre><code class="language-ini">[general]
+dbpath = /db/comments.db
+host = https://example.ir
+
+[server]
+listen = http://0.0.0.0:8080/
+
+[hash]
+salt = Eech7co8Ohloopo9Ol6baimi
+algorithm = pbkdf2
+
+[admin]
+enabled = true
+password = $argon2i$v=19$m=16,t=2,p=1$R2R1VDlATHJyVk4pZ29Mcw$xf9N/uOrnAWN35tg2+iS2Q
+</code></pre>
+<p>توجه داشته باشید در اینجا سرور نیکاس باید روی آدرس آی پی <code>0.0.0.0</code> اجرا شود تا از خارج کانتینر داکر نیز به آن دسترسی وجود داشته باشد.</p>
+<p>با استفاده از دستور زیر نیکاس را اجرا نمایید :</p>
+<pre><code class="language-sh">docker compose up -d
+</code></pre>
+
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">
                             <a rel="prev" href="../config/client.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">

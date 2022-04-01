@@ -130,6 +130,8 @@ h2 a.header {
     -o-transition: margin-right 0.3s ease, transform 0.3s ease;
     transition: margin-right 0.3s ease, transform 0.3s ease;
     transition: margin-right 0.3s ease, transform 0.3s ease,
+        -webkit-transform 0.3s ease;
+    transition: margin-right 0.3s ease, transform 0.3s ease,
         -webkit-transform 0.3s ease; /* Animation: slide away */
 }
 

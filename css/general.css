@@ -130,6 +130,8 @@ h2 a.header {
     -o-transition: margin-right 0.3s ease, transform 0.3s ease;
     transition: margin-right 0.3s ease, transform 0.3s ease;
     transition: margin-right 0.3s ease, transform 0.3s ease,
+        -webkit-transform 0.3s ease;
+    transition: margin-right 0.3s ease, transform 0.3s ease,
         -webkit-transform 0.3s ease; /* Animation: slide away */
 }
 
@@ -222,6 +224,7 @@ blockquote {
     background-color: var(--quote-bg);
     border-top: 0.1em solid var(--quote-border);
     border-bottom: 0.1em solid var(--quote-border);
+    border-radius: 10px;
 }
 
 :not(.footnote-definition) + .footnote-definition,

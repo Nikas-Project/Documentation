@@ -309,6 +309,8 @@ mark.fade-out {
     transition: box-shadow 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out,
         -webkit-box-shadow 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out,
+        -webkit-box-shadow 300ms ease-in-out;
     border: 1px solid var(--searchbar-border-color);
     border-radius: 3px;
     background-color: var(--searchbar-bg);

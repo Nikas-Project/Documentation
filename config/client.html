@@ -116,23 +116,29 @@
                     <main>
                         <h1 id="تنظیمات-کلاینت"><a class="header" href="#تنظیمات-کلاینت">تنظیمات کلاینت</a></h1>
 <p>می‎توانید تنظیمات بخش کلاینت نیکاس را از طریق داده های سفارشی در تگ script انجام دهید. تنظیمات کلی به این صورت است :</p>
-<pre><code class="language-html">&lt;script data-nikas=&quot;/prefix/&quot;
-        data-nikas-id=&quot;thread-id&quot;
-        data-nikas-css=&quot;true&quot;
-        data-nikas-css-url=&quot;null&quot;
-        data-nikas-max-comments-top=&quot;10&quot;
-        data-nikas-max-comments-nested=&quot;5&quot;
-        data-nikas-reveal-on-click=&quot;5&quot;
-        data-nikas-avatar=&quot;true&quot;
-        data-nikas-avatar-bg=&quot;#f0f0f0&quot;
-        data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6 ...&quot;
-        data-nikas-vote=&quot;true&quot;
-        data-nikas-vote-levels=&quot;&quot;
-        data-nikas-feed=&quot;false&quot;
-        src=&quot;/prefix/js/embed.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script
+    data-nikas=&quot;/prefix/&quot;
+    data-nikas-id=&quot;thread-id&quot;
+    data-nikas-css=&quot;true&quot;
+    data-nikas-css-url=&quot;null&quot;
+    data-nikas-max-comments-top=&quot;10&quot;
+    data-nikas-max-comments-nested=&quot;5&quot;
+    data-nikas-reveal-on-click=&quot;5&quot;
+    data-nikas-avatar=&quot;true&quot;
+    data-nikas-avatar-bg=&quot;#f0f0f0&quot;
+    data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6 ...&quot;
+    data-nikas-vote=&quot;true&quot;
+    data-nikas-vote-levels=&quot;&quot;
+    data-nikas-feed=&quot;false&quot;
+    src=&quot;/prefix/js/embed.js&quot;
+&gt;&lt;/script&gt;
 </code></pre>
 <p>علاوه بر این می‎توانید قابلیت تشخیص خودکار عناوین را با شخصی سازی غیرفعال کنید. برای مثال یک عنوان دیگر به جز چیزی که در HTML ثبت شده به صفحه خود اختصاص دهید. یا اینکه Thread ID را تغییر دهید :</p>
-<pre><code class="language-html">&lt;section id=&quot;nikas-thread&quot; data-title=&quot;Hello!&quot; data-nikas-id=&quot;/path/to/resource&quot;&gt;&lt;/section&gt;
+<pre><code class="language-html">&lt;section
+    id=&quot;nikas-thread&quot;
+    data-title=&quot;Hello!&quot;
+    data-nikas-id=&quot;/path/to/resource&quot;
+&gt;&lt;/section&gt;
 </code></pre>
 <h2 id="شرح-تنظیمات"><a class="header" href="#شرح-تنظیمات">شرح تنظیمات</a></h2>
 <p>در ادامه به بررسی هرکدام از تنظیمات می‎پردازیم.</p>
@@ -169,7 +175,10 @@
 <blockquote>
 <p>توجه کنید که اگر کمتر از 8 رنگ تعریف کرده باشید و تعداد زوج نباشد توزیع رنگ نامناسبی خواهید داشت.</p>
 </blockquote>
-<pre><code class="language-html">&lt;script src=&quot;...&quot; data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script
+    src=&quot;...&quot;
+    data-nikas-avatar-fg=&quot;#9abf88 #5698c4 #e279a3 #9163b6&quot;
+&gt;&lt;/script&gt;
 </code></pre>
 <h3 id="data-nikas-vote"><a class="header" href="#data-nikas-vote">data-nikas-vote</a></h3>
 <p>با این گزینه می‎توانید ویژگی رای دادن به نظرات را فعال نمایید.</p>

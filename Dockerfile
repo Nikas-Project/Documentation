@@ -23,7 +23,7 @@ RUN cargo install mdbook --version "${MDBOOK_VERSION}" --target "${ARC}"
 
 RUN mdbook build
 
-FROM nginx:stable-alpine
+FROM nginx:1.20-alpine
 
 ARG DATE_CREATED
 

@@ -27,10 +27,15 @@ env:
   MDBOOK_VERSION: 0.4.15
 
 jobs:
-  Test:
-    name: Test
+  Pages:
+    name: Pages
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel previous workflow
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -52,6 +57,7 @@ jobs:
           mdbook test
 
       - name: Deploy GitHub Pages
+        if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
@@ -59,7 +65,7 @@ jobs:
 
   Docker:
     name: Docker
-    needs: Test
+    needs: Pages
     runs-on: ubuntu-latest
 
     steps:

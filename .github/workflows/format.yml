@@ -30,3 +30,4 @@ jobs:
           verbose: true
           failure-threshold: error
           format: tty
+          ignore: "DL3059"

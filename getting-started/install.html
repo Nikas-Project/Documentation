@@ -59,7 +59,7 @@
         </script>
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../introducing/index.html">معرفی</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../introducing/introducing.html">نیکاس چیست ؟</a></li><li class="chapter-item expanded "><a href="../introducing/similar.html">نمونه های مشابه</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html" class="active">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html">داکر</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../similar.html">نمونه های مشابه</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html" class="active">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html">داکر</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -133,34 +133,37 @@
 <pre><code class="language-bash">ln -s /opt/nikas/bin/nikas /usr/local/bin/nikas
 </code></pre>
 <h2 id="docker"><a class="header" href="#docker">Docker <!-- omit in toc --></a></h2>
-<p>می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های از پیش ساخته شده ی ما استفاده کنید :</p>
+<p>می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های اصلی پروژه استفاده کنید :</p>
 <pre><code class="language-bash">docker build -t nikas .
+
 # or
+
 docker pull nikasproject/server
 </code></pre>
 <p>سپس آن را اجرا می‎نمایید :</p>
 <pre><code class="language-bash">docker run -d --rm --name nikas -p 127.0.0.1:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server
 </code></pre>
-<p>جهت مشاهده نصب و استفاده پیشرفته با Docker به این صفحه مراجعه کنید.</p>
+<p>جهت مشاهده نصب و استفاده پیشرفته با Docker به <a href="../config/docker.html">این صفحه</a> مراجعه کنید.</p>
 <h2 id="source"><a class="header" href="#source">Source <!-- omit in toc --></a></h2>
 <p>اگر قصد دارید تا نیکاس را خودتان کامپایل و استفاده نمایید یا در پروژه مشارکت نمایید ، نیاز به انجام مراحل بیشتر و پیچیده تری دارید. ابتدا پروژه را دریافت کنید :</p>
 <pre><code class="language-bash">git clone https://github.com/Nikas-Project/Server.git nikas
 cd nikas
 </code></pre>
-<p>سپس باید یک virtual environment داشته باشید :</p>
+<p>سپس باید یک Virtual Environment داشته باشید :</p>
 <pre><code class="language-bash">virtualenv .
 source ./bin/activate
 </code></pre>
-<p>حال کتابخانه های جاوااسکریپت را با استفاده از NPM نصب می‎کنیم :</p>
+<p>حال کتابخانه های جاوا اسکریپت را با استفاده از NPM نصب می‎کنیم :</p>
 <pre><code class="language-bash">make init
 </code></pre>
-<p>حال بخش frontend پروژه را می‎سازیم :</p>
+<p>حال بخش Frontend پروژه را می‎سازیم :</p>
 <pre><code class="language-bash">make js
 </code></pre>
-<p>برای ساخت بخش backend نیز دستور زیر را اجرا می‎کنیم :</p>
+<p>توجه داشته باشید که فایل های Style پروژه یا همان CSS ها به صورت Sass نوشته شده و باید پردازش شوند. جهت این کار ، پس از تغییر دادن آن ها دستور زیر را اجرا نمایید :</p>
+<pre><code class="language-bash">make sass
+</code></pre>
+<p>برای ساخت بخش Backend نیز دستور زیر را اجرا می‎کنیم :</p>
 <pre><code class="language-bash">python setup.py develop
-# or
-pip install -e .
 </code></pre>
 
                     </main>

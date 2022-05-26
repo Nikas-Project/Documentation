@@ -173,6 +173,7 @@ h2 a.header {
 .content img,
 .content video {
     max-width: 100%;
+    border-radius: 15px;
 }
 
 .content .header:link,

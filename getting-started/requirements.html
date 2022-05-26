@@ -59,7 +59,7 @@
         </script>
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../introducing/index.html">معرفی</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../introducing/introducing.html">نیکاس چیست ؟</a></li><li class="chapter-item expanded "><a href="../introducing/similar.html">نمونه های مشابه</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html" class="active">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html">داکر</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../similar.html">نمونه های مشابه</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html" class="active">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html">داکر</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -121,11 +121,11 @@
 <p><img src="../images/usage-standby.jpg" alt="standby" /></p>
 <p>و در هنگام لود بالا نیز مصرف منابع آن بدین صورت است :</p>
 <p><img src="../images/usage-load1.png" alt="load1" /></p>
+<p>شبیه سازی با 500 کاربر و 40 درخواست در ثانیه انجام شده است :</p>
 <p><img src="../images/usage-load2.png" alt="load2" /></p>
-<p>شبیه سازی با 500 کاربر و 40 درخواست در ثانیه انجام شده است</p>
 <hr />
 <h2 id="نرم-افزار"><a class="header" href="#نرم-افزار">نرم افزار</a></h2>
-<p>نیکاس با زبان پایتون نوشته شده است. اگر فکر می کنید که اجرا و استقرار یک پروژه پایتون به راحتی پروژه های PHP است کاملا در اشتباه هستید. بر خلاف PHP در اکثر توزیع های لینوکس از پایتون برای ابزارهای مختلف خود استفاده می کنند. ما نیز در پروژه های پایتون خودمان ابزارهای مختلفی داریم. این کتابخانه ها ( ابزار ها ) با استفاده از Package Manager ها نصب می شوند.</p>
+<p>نیکاس با زبان Python نوشته شده است. اگر فکر می کنید که اجرا و استقرار یک پروژه پایتون به راحتی پروژه های PHP است کاملا در اشتباه هستید. بر خلاف PHP در اکثر توزیع های لینوکس از پایتون برای ابزارهای مختلف خود استفاده می کنند. ما نیز در پروژه های پایتون خودمان ابزارهای مختلفی داریم. این کتابخانه ها ( ابزار ها ) با استفاده از Package Manager ها نصب می شوند.</p>
 <p>اولین و مهمترین قانونی که با آن برخورد می کنید این است که هرگز دستورات PyPi را به صورت root اجرا نکنید. و این به خاطر احتمال وجود برنامه های مخرب نیست ، بلکه به خاطر جلوگیری از اختلال در سیستم عامل است.</p>
 <p>جهت مطالعه بیشتر به <a href="https://workaround.org/easy-install-debian">این لینک</a> بروید.</p>
 <p>خوشبختانه پایتون راهی پیش روی ما قرار داده تا کتابخانه های خودمان را به راحتی نصب و استفاده کنیم بدون اینکه نرم افزارهای اصلی یا سیستم عامل دچار مشکل شوند و اون هم <code>virtualenv</code> است. جهت نصب آن دستورات زیر را اجرا نمایید :</p>
@@ -137,7 +137,7 @@ sudo yum install python-setuptools python-virtualenv python-devel
 </code></pre>
 <p>نیازمندی های اصلی نیکاس :</p>
 <ul>
-<li>Python 3.5+ (+ devel headers)</li>
+<li>Python 3.7+ (+ devel headers)</li>
 <li>SQLite 3.3.8 or later</li>
 </ul>
 <p>در صورتی که تمایل به کامپایل و اجرای نیکاس از سورس را دارید ، باید لیست زیر را نصب داشته باشید :</p>

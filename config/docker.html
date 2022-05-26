@@ -59,7 +59,7 @@
         </script>
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../introducing/index.html">معرفی</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../introducing/introducing.html">نیکاس چیست ؟</a></li><li class="chapter-item expanded "><a href="../introducing/similar.html">نمونه های مشابه</a></li></ol></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html" class="active">داکر</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">نیکاس</a></li><li class="chapter-item expanded "><a href="../similar.html">نمونه های مشابه</a></li><li class="chapter-item expanded "><a href="../getting-started/index.html">شروع به کار</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../getting-started/requirements.html">نیازمندی ها</a></li><li class="chapter-item expanded "><a href="../getting-started/install.html">نصب</a></li><li class="chapter-item expanded "><a href="../getting-started/run.html">اجرا</a></li></ol></li><li class="chapter-item expanded "><a href="../config/index.html">تنظیمات</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../config/server.html">سرور</a></li><li class="chapter-item expanded "><a href="../config/client.html">کلاینت</a></li><li class="chapter-item expanded "><a href="../config/docker.html" class="active">داکر</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -119,15 +119,15 @@
 <p>نیکاس به صورت کامل داکرایز شده و شما به راحتی با بهره بردن از Docker قابلیت اجرا و استفاده از اون رو دارید. ایمیج های سرور نیکاس در دو رجیستری <a href="https://github.com/Nikas-Project/Server/pkgs/container/Server%2Fserver">Github</a> و <a href="https://hub.docker.com/r/nikasproject/server">Dockerhub</a> برای شما عزیزان قرار داده شده است :</p>
 <h2 id="دریافت-ایمیج"><a class="header" href="#دریافت-ایمیج">دریافت ایمیج</a></h2>
 <p>با دستور pull می‎توانید آخرین نسخه از سرور نیکاس را دریافت نمایید :</p>
-<pre><code class="language-sh">docker pull nikasproject/server:1.1.9
+<pre><code class="language-sh">docker pull nikasproject/server:2.0.1
 
 # Or
 
-docker pull ghcr.io/nikas-project/server/server:1.1.9
+docker pull ghcr.io/nikas-project/server/server:2.0.1
 </code></pre>
 <h2 id="اجرا"><a class="header" href="#اجرا">اجرا</a></h2>
 <p>اجرای نیکاس به یک دستور ساده انجام خواهد شد. فقط کافی است یک دایرکتوری برای آن بسازید ( برای مثال <code>opt/nikas/</code> ) و تنظیمات خود را در آن قرار دهید. سپس دستور زیر را اجرا نمایید :</p>
-<pre><code class="language-sh">docker run -d --rm --name nikas -p 0.0.0.0:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server:1.1.9
+<pre><code class="language-sh">docker run -d --rm --name nikas -p 0.0.0.0:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server:2.0.1
 </code></pre>
 <p>اما اجرای آن با استفاده از Docker Compose راحت تر است.</p>
 <blockquote>
@@ -138,7 +138,7 @@ docker pull ghcr.io/nikas-project/server/server:1.1.9
 
 services:
     server:
-        image: nikasproject/server:1.1.9
+        image: nikasproject/server:2.0.1
         restart: unless-stopped
         container_name: nikas
         environment:

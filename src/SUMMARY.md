@@ -1,9 +1,7 @@
 # Summary
 
 -   [نیکاس](index.md)
--   [معرفی](introducing/index.md)
-    -   [نیکاس چیست ؟](introducing/introducing.md)
-    -   [نمونه های مشابه](introducing/similar.md)
+-   [نمونه های مشابه](similar.md)
 -   [شروع به کار](getting-started/index.md)
     -   [نیازمندی ها](getting-started/requirements.md)
     -   [نصب](getting-started/install.md)

@@ -30,11 +30,13 @@ ln -s /opt/nikas/bin/nikas /usr/local/bin/nikas
 
 ## Docker <!-- omit in toc -->
 
-می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های از پیش ساخته شده ی ما استفاده کنید :
+می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های اصلی پروژه استفاده کنید :
 
 ```bash
 docker build -t nikas .
+
 # or
+
 docker pull nikasproject/server
 ```
 
@@ -44,7 +46,7 @@ docker pull nikasproject/server
 docker run -d --rm --name nikas -p 127.0.0.1:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server
 ```
 
-جهت مشاهده نصب و استفاده پیشرفته با Docker به این صفحه مراجعه کنید.
+جهت مشاهده نصب و استفاده پیشرفته با Docker به [این صفحه](../config/docker.md) مراجعه کنید.
 
 ## Source <!-- omit in toc -->
 
@@ -55,29 +57,33 @@ git clone https://github.com/Nikas-Project/Server.git nikas
 cd nikas
 ```
 
-سپس باید یک virtual environment داشته باشید :
+سپس باید یک Virtual Environment داشته باشید :
 
 ```bash
 virtualenv .
 source ./bin/activate
 ```
 
-حال کتابخانه های جاوااسکریپت را با استفاده از NPM نصب می‎کنیم :
+حال کتابخانه های جاوا اسکریپت را با استفاده از NPM نصب می‎کنیم :
 
 ```bash
 make init
 ```
 
-حال بخش frontend پروژه را می‎سازیم :
+حال بخش Frontend پروژه را می‎سازیم :
 
 ```bash
 make js
 ```
 
-برای ساخت بخش backend نیز دستور زیر را اجرا می‎کنیم :
+توجه داشته باشید که فایل های Style پروژه یا همان CSS ها به صورت Sass نوشته شده و باید پردازش شوند. جهت این کار ، پس از تغییر دادن آن ها دستور زیر را اجرا نمایید :
+
+```bash
+make sass
+```
+
+برای ساخت بخش Backend نیز دستور زیر را اجرا می‎کنیم :
 
 ```bash
 python setup.py develop
-# or
-pip install -e .
 ```

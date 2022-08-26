@@ -9,3 +9,11 @@ updates:
       - "hatamiarash7"
     reviewers:
       - "hatamiarash7"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "hatamiarash7"
+    reviewers:
+      - "hatamiarash7"

@@ -24,7 +24,7 @@ env:
   IMAGE_NAME: nikasproject/documentation
   REGISTRY: ghcr.io
   GITHUB_IMAGE_NAME: ${{ github.repository }}/documentation:latest
-  MDBOOK_VERSION: 0.4.15
+  MDBOOK_VERSION: 0.4.21
 
 jobs:
   Pages:
@@ -83,8 +83,7 @@ jobs:
           string: ${{ env.REGISTRY }}/${{ env.GITHUB_IMAGE_NAME }}
 
       - name: Build image
-        run: |
-          docker build -t ${{ env.IMAGE_NAME }}:latest -t ${{ steps.github-image.outputs.lowercase }} --build-arg DATE_CREATED=${{ steps.date.outputs.date }} --build-arg MDBOOK_VERSION=${{ env.MDBOOK_VERSION }} .
+        run: docker build -t ${{ env.IMAGE_NAME }}:latest -t ${{ steps.github-image.outputs.lowercase }} --build-arg DATE_CREATED=${{ steps.date.outputs.date }} --build-arg MDBOOK_VERSION=${{ env.MDBOOK_VERSION }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
@@ -119,5 +118,4 @@ jobs:
 
       - name: Push to ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
-        run: |
-          docker push ${{ steps.github-image.outputs.lowercase }}
+        run: docker push ${{ steps.github-image.outputs.lowercase }}

@@ -1,7 +1,7 @@
 FROM rust:slim-buster AS builder
 
 ARG MDBOOK_VERSION
-ENV MDBOOK_VERSION ${MDBOOK_VERSION:-0.4.15}
+ENV MDBOOK_VERSION ${MDBOOK_VERSION:-0.4.21}
 ENV ARC="x86_64-unknown-linux-gnu"
 
 RUN mkdir /backend
@@ -23,7 +23,7 @@ RUN cargo install mdbook --version "${MDBOOK_VERSION}" --target "${ARC}"
 
 RUN mdbook build
 
-FROM nginx:1.22-alpine
+FROM nginx:1.23-alpine
 
 ARG DATE_CREATED
 

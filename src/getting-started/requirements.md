@@ -48,6 +48,8 @@ sudo yum install python-setuptools python-virtualenv python-devel
 -   [NodeJS](https://nodejs.org/en/download/)
 -   [NPM](https://npmjs.org/)
 
+> ❕ متاسفانه به دلیل برخی کتابخانه های استفاده شده در نیکاس امکان استفاده از NodeJS نسخه ۱۶ به بالا وجود ندارد. حتما از نسخه ۱۴ استفاده کنید.
+
 ```bash
 # for Debian/Ubuntu
 sudo apt-get install python-dev sqlite3 build-essential

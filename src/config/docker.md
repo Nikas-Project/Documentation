@@ -9,11 +9,11 @@
 با دستور pull می‎توانید آخرین نسخه از سرور نیکاس را دریافت نمایید :
 
 ```sh
-docker pull nikasproject/server:2.0.1
+docker pull nikasproject/server:2.0.4
 
 # Or
 
-docker pull ghcr.io/nikas-project/server/server:2.0.1
+docker pull ghcr.io/nikas-project/server/server:2.0.4
 ```
 
 ## اجرا
@@ -21,7 +21,7 @@ docker pull ghcr.io/nikas-project/server/server:2.0.1
 اجرای نیکاس به یک دستور ساده انجام خواهد شد. فقط کافی است یک دایرکتوری برای آن بسازید ( برای مثال `opt/nikas/` ) و تنظیمات خود را در آن قرار دهید. سپس دستور زیر را اجرا نمایید :
 
 ```sh
-docker run -d --rm --name nikas -p 0.0.0.0:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server:2.0.1
+docker run -d --rm --name nikas -p 0.0.0.0:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server:2.0.4
 ```
 
 اما اجرای آن با استفاده از Docker Compose راحت تر است.
@@ -35,7 +35,7 @@ version: "3.7"
 
 services:
     server:
-        image: nikasproject/server:2.0.1
+        image: nikasproject/server:2.0.4
         restart: unless-stopped
         container_name: nikas
         environment:

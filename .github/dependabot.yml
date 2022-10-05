@@ -17,3 +17,11 @@ updates:
       - "hatamiarash7"
     reviewers:
       - "hatamiarash7"
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "semver"
+      - dependency-name: "crates-io"
+    rebase-strategy: "disabled"

@@ -24,4 +24,3 @@ updates:
     ignore:
       - dependency-name: "semver"
       - dependency-name: "crates-io"
-    rebase-strategy: "disabled"

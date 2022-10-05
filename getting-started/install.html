@@ -118,8 +118,9 @@
 <p>راه های مختلفی برای نصب نیکاس وجود داره :</p>
 <ul>
 <li><a href="#python-package">Python Package</a></li>
-<li><a href="#docker">Docker</a></li>
 <li><a href="#source">Source</a></li>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
 </ul>
 <p>قبل از شروع به نصب ، ابتدا صفحه <a href="requirements.html">پیش نیازها</a> را مطالعه کنید.</p>
 <h2 id="python-package"><a class="header" href="#python-package">Python Package <!-- omit in toc --></a></h2>
@@ -132,18 +133,6 @@
 <p>جهت ساده تر شدن ، یک symlink نیز به آدرسی در PATH تنظیم کنید. برای مثال :</p>
 <pre><code class="language-bash">ln -s /opt/nikas/bin/nikas /usr/local/bin/nikas
 </code></pre>
-<h2 id="docker"><a class="header" href="#docker">Docker <!-- omit in toc --></a></h2>
-<p>می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های اصلی پروژه استفاده کنید :</p>
-<pre><code class="language-bash">docker build -t nikas .
-
-# or
-
-docker pull nikasproject/server
-</code></pre>
-<p>سپس آن را اجرا می‎نمایید :</p>
-<pre><code class="language-bash">docker run -d --rm --name nikas -p 127.0.0.1:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server
-</code></pre>
-<p>جهت مشاهده نصب و استفاده پیشرفته با Docker به <a href="../config/docker.html">این صفحه</a> مراجعه کنید.</p>
 <h2 id="source"><a class="header" href="#source">Source <!-- omit in toc --></a></h2>
 <p>اگر قصد دارید تا نیکاس را خودتان کامپایل و استفاده نمایید یا در پروژه مشارکت نمایید ، نیاز به انجام مراحل بیشتر و پیچیده تری دارید. ابتدا پروژه را دریافت کنید :</p>
 <pre><code class="language-bash">git clone https://github.com/Nikas-Project/Server.git nikas
@@ -165,6 +154,53 @@ source ./bin/activate
 <p>برای ساخت بخش Backend نیز دستور زیر را اجرا می‎کنیم :</p>
 <pre><code class="language-bash">python setup.py develop
 </code></pre>
+<h2 id="docker"><a class="header" href="#docker">Docker <!-- omit in toc --></a></h2>
+<p>می توانید نیکاس را به راحتی با استفاده از Docker نصب و استفاده نمایید. برای این کار دو راه دارید. یا خودتان Image را بسازید یا از Image های اصلی پروژه استفاده کنید :</p>
+<pre><code class="language-bash">docker build -t nikas .
+
+# or
+
+docker pull nikasproject/server
+</code></pre>
+<p>سپس آن را اجرا می‎نمایید :</p>
+<pre><code class="language-bash">docker run -d --rm --name nikas -p 127.0.0.1:8080:8080 -v /opt/nikas:/config -v /opt/nikas:/db nikasproject/server
+</code></pre>
+<p>جهت مشاهده نصب و استفاده پیشرفته با Docker به <a href="../config/docker.html">این صفحه</a> مراجعه کنید.</p>
+<h2 id="kubernetes"><a class="header" href="#kubernetes">Kubernetes <!-- omit in toc --></a></h2>
+<p>از آنجایی که برای سرور نیکاس ایمیج داکری در اختیار دارید ٬ استقرار آن روی کلاستر Kubernetes نیز به راحتی صورت می‎گیرد. قبل از شروع به دو نکته توجه داشته باشید:</p>
+<ul>
+<li>جهت اعمال کانفیگ های مختلف باید از ConfigMap استفاده کنید.</li>
+<li>جهت ذخیره سازی دیتابیس باید از PersistentVolumeClaim استفاده کنید.</li>
+</ul>
+<p>فایل Deployment نمونه در <a href="https://github.com/Nikas-Project/Server/blob/master/kubernetes/deployment.yml">مخزن نیکاس موجود است</a>. تنظیمات مورد نظر خودتان را اعمال کرده و نیکاس را مستقر کنید:</p>
+<pre><code class="language-bash">kubectl apply -f nikas-deployment.yaml
+</code></pre>
+<p>تنظیماتی که باید اعمال کنید شامل این موارد است:</p>
+<ul>
+<li><code>image</code> : نام و تگ ایمیج داکری نیکاس</li>
+<li><code>resources</code> : مشخصات منابع مورد نیاز برای اجرای نیکاس</li>
+<li><code>PersistentVolumeClaim</code> : حجم مورد نیاز برای ذخیره سازی دیتابیس</li>
+<li><code>ConfigMap</code> : کانفیگ های مورد نیاز برای اجرای نیکاس</li>
+<li><code>Route</code> : اگر از OpenShift استفاده می‎کنید ٬ این بخش را جهت معرفی دامنه خود تنظیم نمایید. در غیر اینصورت این بخش را حذف کرده و از Ingress Controller مناسب استفاده نمایید.</li>
+</ul>
+<h3 id="استقرار-در-کانتینر-ابری-ابرآروان"><a class="header" href="#استقرار-در-کانتینر-ابری-ابرآروان">استقرار در کانتینر ابری ابرآروان</a></h3>
+<p>جهت استقرار نیکاس در کانتینر ابری ابرآروان ابتدا مراحل زیر را انجام دهید:</p>
+<ul>
+<li>ایجاد یک پروژه جدید ( یا استفاده از پروژه فعلی )</li>
+<li>ایجاد یک کلید دسترسی با مراجعه به تنظیمات / کلیدهای API ( <a href="https://www.arvancloud.com/help/fa/article/360034038654--%da%86%da%af%d9%88%d9%86%d9%87-API-Key-%db%8c%d8%a7-%da%a9%d9%84%db%8c%d8%af-%d8%af%d8%b3%d8%aa%d8%b1%d8%b3%db%8c-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87%e2%80%8c%d9%86%d9%88%db%8c%d8%b3%db%8c-%d8%a8%d8%b3%d8%a7%d8%b2%db%8c%d8%af%d8%9f">راهنما</a> )</li>
+<li>تعریف یک زیردامنه برای نیکاس ( مثلا <code>nikas.example.com</code> ) و ثبت رکورد CNAME با مقدار زیر:
+<ul>
+<li>‍<code>nikas.example.com</code> → <code>default-gateway.ir-thr-at1.arvan.run</code></li>
+</ul>
+</li>
+<li>دریافت <a href="https://docs.arvancloud.com/fa/developer-tools/cli/">CLI</a> ابرآروان</li>
+</ul>
+<p>پس از انجام مراحل بالا می‎توانید نیکاس را مستقر کنید:</p>
+<pre><code class="language-bash">arvan login
+arvan paas project &lt;project-name&gt;
+arvan paas create -f nikas-deployment.yaml
+</code></pre>
+<p>پس از چند ثانیه سرور نیکاس آماده استفاده خواهد بود.</p>
 
                     </main>
                     <nav class="nav-wrapper" aria-label="Page navigation">

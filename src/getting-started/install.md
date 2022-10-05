@@ -117,7 +117,7 @@ kubectl apply -f nikas-deployment.yaml
 -   ایجاد یک پروژه جدید ( یا استفاده از پروژه فعلی )
 -   ایجاد یک کلید دسترسی با مراجعه به تنظیمات / کلیدهای API ( [راهنما](https://www.arvancloud.com/help/fa/article/360034038654--%da%86%da%af%d9%88%d9%86%d9%87-API-Key-%db%8c%d8%a7-%da%a9%d9%84%db%8c%d8%af-%d8%af%d8%b3%d8%aa%d8%b1%d8%b3%db%8c-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87%e2%80%8c%d9%86%d9%88%db%8c%d8%b3%db%8c-%d8%a8%d8%b3%d8%a7%d8%b2%db%8c%d8%af%d8%9f) )
 -   تعریف یک زیردامنه برای نیکاس ( مثلا `nikas.example.com` ) و ثبت رکورد CNAME با مقدار زیر:
-    -   ‍`nikas.example.com` → `default-gateway.ir-thr-at1.arvan.run`
+    -   ‍`nikas.example.com` → `default-gateway.ir-thr-at1.arvan.run.`
 -   دریافت [CLI](https://docs.arvancloud.com/fa/developer-tools/cli/) ابرآروان
 
 پس از انجام مراحل بالا می‎توانید نیکاس را مستقر کنید:

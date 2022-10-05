@@ -276,3 +276,7 @@ blockquote {
 .result-no-output {
     font-style: italic;
 }
+
+.hljs {
+    unicode-bidi: embed !important;
+}

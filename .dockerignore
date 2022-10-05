@@ -1,0 +1,11 @@
+.github
+.vscode
+
+.dockerignore
+Dockerfile
+
+.editorconfig
+.gitignore
+CNAME
+LICENSE
+README.md

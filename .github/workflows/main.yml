@@ -78,7 +78,7 @@ jobs:
 
       - name: Create image name
         id: github-image
-        uses: ASzc/change-string-case-action@v3
+        uses: ASzc/change-string-case-action@v4
         with:
           string: ${{ env.REGISTRY }}/${{ env.GITHUB_IMAGE_NAME }}
 

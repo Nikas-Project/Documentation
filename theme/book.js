@@ -20,7 +20,7 @@ function playground_text(playground) {
         return Promise.race([
             fetch(url, options),
             new Promise((_, reject) =>
-                setTimeout(() => reject(new Error("timeout")), timeout)
+                setTimeout(() => reject(new Error("timeout")), timeout),
             ),
         ]);
     }
@@ -38,10 +38,10 @@ function playground_text(playground) {
             .then((response) => {
                 // get list of crates available in the rust playground
                 let playground_crates = response.crates.map(
-                    (item) => item["id"]
+                    (item) => item["id"],
                 );
                 playgrounds.forEach((block) =>
-                    handle_crate_list_update(block, playground_crates)
+                    handle_crate_list_update(block, playground_crates),
                 );
             });
     }
@@ -154,7 +154,7 @@ function playground_text(playground) {
             .catch(
                 (error) =>
                     (result_block.innerText =
-                        "Playground Communication: " + error.message)
+                        "Playground Communication: " + error.message),
             );
     }
 
@@ -238,88 +238,92 @@ function playground_text(playground) {
                         block.classList.add("hide-boring");
                     }
                 });
-        }
+        },
     );
 
     if (window.playground_copyable) {
-        Array.from(document.querySelectorAll("pre code")).forEach(function (
-            block
-        ) {
-            var pre_block = block.parentNode;
-            if (!pre_block.classList.contains("playground")) {
-                var buttons = pre_block.querySelector(".buttons");
-                if (!buttons) {
-                    buttons = document.createElement("div");
-                    buttons.className = "buttons";
-                    pre_block.insertBefore(buttons, pre_block.firstChild);
+        Array.from(document.querySelectorAll("pre code")).forEach(
+            function (block) {
+                var pre_block = block.parentNode;
+                if (!pre_block.classList.contains("playground")) {
+                    var buttons = pre_block.querySelector(".buttons");
+                    if (!buttons) {
+                        buttons = document.createElement("div");
+                        buttons.className = "buttons";
+                        pre_block.insertBefore(buttons, pre_block.firstChild);
+                    }
+
+                    var clipButton = document.createElement("button");
+                    clipButton.className = "fa fa-copy clip-button";
+                    clipButton.title = "Copy to clipboard";
+                    clipButton.setAttribute("aria-label", clipButton.title);
+                    clipButton.innerHTML = '<i class="tooltiptext"></i>';
+
+                    buttons.insertBefore(clipButton, buttons.firstChild);
                 }
-
-                var clipButton = document.createElement("button");
-                clipButton.className = "fa fa-copy clip-button";
-                clipButton.title = "Copy to clipboard";
-                clipButton.setAttribute("aria-label", clipButton.title);
-                clipButton.innerHTML = '<i class="tooltiptext"></i>';
-
-                buttons.insertBefore(clipButton, buttons.firstChild);
-            }
-        });
+            },
+        );
     }
 
     // Process playground code blocks
-    Array.from(document.querySelectorAll(".playground")).forEach(function (
-        pre_block
-    ) {
-        // Add play button
-        var buttons = pre_block.querySelector(".buttons");
-        if (!buttons) {
-            buttons = document.createElement("div");
-            buttons.className = "buttons";
-            pre_block.insertBefore(buttons, pre_block.firstChild);
-        }
+    Array.from(document.querySelectorAll(".playground")).forEach(
+        function (pre_block) {
+            // Add play button
+            var buttons = pre_block.querySelector(".buttons");
+            if (!buttons) {
+                buttons = document.createElement("div");
+                buttons.className = "buttons";
+                pre_block.insertBefore(buttons, pre_block.firstChild);
+            }
 
-        var runCodeButton = document.createElement("button");
-        runCodeButton.className = "fa fa-play play-button";
-        runCodeButton.hidden = true;
-        runCodeButton.title = "Run this code";
-        runCodeButton.setAttribute("aria-label", runCodeButton.title);
+            var runCodeButton = document.createElement("button");
+            runCodeButton.className = "fa fa-play play-button";
+            runCodeButton.hidden = true;
+            runCodeButton.title = "Run this code";
+            runCodeButton.setAttribute("aria-label", runCodeButton.title);
 
-        buttons.insertBefore(runCodeButton, buttons.firstChild);
-        runCodeButton.addEventListener("click", function (e) {
-            run_rust_code(pre_block);
-        });
-
-        if (window.playground_copyable) {
-            var copyCodeClipboardButton = document.createElement("button");
-            copyCodeClipboardButton.className = "fa fa-copy clip-button";
-            copyCodeClipboardButton.innerHTML = '<i class="tooltiptext"></i>';
-            copyCodeClipboardButton.title = "Copy to clipboard";
-            copyCodeClipboardButton.setAttribute(
-                "aria-label",
-                copyCodeClipboardButton.title
-            );
-
-            buttons.insertBefore(copyCodeClipboardButton, buttons.firstChild);
-        }
-
-        let code_block = pre_block.querySelector("code");
-        if (window.ace && code_block.classList.contains("editable")) {
-            var undoChangesButton = document.createElement("button");
-            undoChangesButton.className = "fa fa-history reset-button";
-            undoChangesButton.title = "Undo changes";
-            undoChangesButton.setAttribute(
-                "aria-label",
-                undoChangesButton.title
-            );
-
-            buttons.insertBefore(undoChangesButton, buttons.firstChild);
-
-            undoChangesButton.addEventListener("click", function () {
-                let editor = window.ace.edit(code_block);
-                editor.setValue(editor.originalCode);
-                editor.clearSelection();
+            buttons.insertBefore(runCodeButton, buttons.firstChild);
+            runCodeButton.addEventListener("click", function (e) {
+                run_rust_code(pre_block);
             });
-        }
-    });
+
+            if (window.playground_copyable) {
+                var copyCodeClipboardButton = document.createElement("button");
+                copyCodeClipboardButton.className = "fa fa-copy clip-button";
+                copyCodeClipboardButton.innerHTML =
+                    '<i class="tooltiptext"></i>';
+                copyCodeClipboardButton.title = "Copy to clipboard";
+                copyCodeClipboardButton.setAttribute(
+                    "aria-label",
+                    copyCodeClipboardButton.title,
+                );
+
+                buttons.insertBefore(
+                    copyCodeClipboardButton,
+                    buttons.firstChild,
+                );
+            }
+
+            let code_block = pre_block.querySelector("code");
+            if (window.ace && code_block.classList.contains("editable")) {
+                var undoChangesButton = document.createElement("button");
+                undoChangesButton.className = "fa fa-history reset-button";
+                undoChangesButton.title = "Undo changes";
+                undoChangesButton.setAttribute(
+                    "aria-label",
+                    undoChangesButton.title,
+                );
+
+                buttons.insertBefore(undoChangesButton, buttons.firstChild);
+
+                undoChangesButton.addEventListener("click", function () {
+                    let editor = window.ace.edit(code_block);
+                    editor.setValue(editor.originalCode);
+                    editor.clearSelection();
+                });
+            }
+        },
+    );
 })();
 
 (function themes() {
@@ -380,7 +384,7 @@ function playground_text(playground) {
 
         setTimeout(function () {
             themeColorMetaTag.content = getComputedStyle(
-                document.body
+                document.body,
             ).backgroundColor;
         }, 1);
 
@@ -537,14 +541,14 @@ function playground_text(playground) {
         if (html.classList.contains("sidebar-hidden")) {
             var current_width = parseInt(
                 document.documentElement.style.getPropertyValue(
-                    "--sidebar-width"
+                    "--sidebar-width",
                 ),
-                10
+                10,
             );
             if (current_width < 150) {
                 document.documentElement.style.setProperty(
                     "--sidebar-width",
-                    "150px"
+                    "150px",
                 );
             }
             showSidebar();
@@ -577,7 +581,7 @@ function playground_text(playground) {
             pos = Math.min(pos, window.innerWidth - 100);
             document.documentElement.style.setProperty(
                 "--sidebar-width",
-                pos + "px"
+                pos + "px",
             );
         }
     }
@@ -596,7 +600,7 @@ function playground_text(playground) {
                 time: Date.now(),
             };
         },
-        { passive: true }
+        { passive: true },
     );
 
     document.addEventListener(
@@ -620,7 +624,7 @@ function playground_text(playground) {
                 firstContact = null;
             }
         },
-        { passive: true }
+        { passive: true },
     );
 
     // Scroll sidebar to current active section
@@ -653,7 +657,7 @@ function playground_text(playground) {
             case "ArrowLeft":
                 e.preventDefault();
                 var previousButton = document.querySelector(
-                    ".nav-chapters.previous"
+                    ".nav-chapters.previous",
                 );
                 if (previousButton) {
                     window.location.href = previousButton.href;
@@ -755,7 +759,7 @@ function playground_text(playground) {
                 }
                 prevScrollTop = scrollTop;
             },
-            { passive: true }
+            { passive: true },
         );
     })();
     (function controllBorder() {
@@ -769,7 +773,7 @@ function playground_text(playground) {
                     menu.classList.add("bordered");
                 }
             },
-            { passive: true }
+            { passive: true },
         );
     })();
 })();

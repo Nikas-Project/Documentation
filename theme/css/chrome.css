@@ -165,19 +165,31 @@ a > .hljs {
     -ms-flex-direction: column;
     flex-direction: column;
 
-    -webkit-transition: color 0.5s, background-color 0.5s;
+    -webkit-transition:
+        color 0.5s,
+        background-color 0.5s;
 
-    -o-transition: color 0.5s, background-color 0.5s;
+    -o-transition:
+        color 0.5s,
+        background-color 0.5s;
 
-    transition: color 0.5s, background-color 0.5s;
+    transition:
+        color 0.5s,
+        background-color 0.5s;
 }
 
 .nav-chapters:hover {
     text-decoration: none;
     background-color: var(--theme-hover);
-    -webkit-transition: background-color 0.15s, color 0.15s;
-    -o-transition: background-color 0.15s, color 0.15s;
-    transition: background-color 0.15s, color 0.15s;
+    -webkit-transition:
+        background-color 0.15s,
+        color 0.15s;
+    -o-transition:
+        background-color 0.15s,
+        color 0.15s;
+    transition:
+        background-color 0.15s,
+        color 0.15s;
 }
 
 .nav-wrapper {
@@ -307,9 +319,11 @@ mark.fade-out {
     transition: -webkit-box-shadow 300ms ease-in-out;
     -o-transition: box-shadow 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out,
+    transition:
+        box-shadow 300ms ease-in-out,
         -webkit-box-shadow 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out,
+    transition:
+        box-shadow 300ms ease-in-out,
         -webkit-box-shadow 300ms ease-in-out;
     border: 1px solid var(--searchbar-border-color);
     border-radius: 3px;
@@ -387,7 +401,9 @@ ul#searchresults span.teaser em {
     transition: -webkit-transform 0.3s;
     -o-transition: transform 0.3s;
     transition: transform 0.3s;
-    transition: transform 0.3s, -webkit-transform 0.3s; /* Animation: slide away */
+    transition:
+        transform 0.3s,
+        -webkit-transform 0.3s; /* Animation: slide away */
 }
 .sidebar code {
     line-height: 2em;
@@ -491,7 +507,9 @@ ul#searchresults span.teaser em {
     transition: -webkit-transform 0.5s;
     -o-transition: transform 0.5s;
     transition: transform 0.5s;
-    transition: transform 0.5s, -webkit-transform 0.5s;
+    transition:
+        transform 0.5s,
+        -webkit-transform 0.5s;
 }
 
 /* collapse the section */

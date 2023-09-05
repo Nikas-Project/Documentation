@@ -253,7 +253,7 @@ var hljs = (function () {
         m = function (e, n, t = {}) {
             var a = r(
                 { className: "comment", begin: e, end: n, contains: [] },
-                t
+                t,
             );
             return (
                 a.contains.push(b),
@@ -294,7 +294,7 @@ var hljs = (function () {
                                 0 !== e.index && n.ignoreMatch();
                             },
                         },
-                        e
+                        e,
                     )
                 );
             },
@@ -427,7 +427,7 @@ var hljs = (function () {
                                       y.subLanguage,
                                       A,
                                       !0,
-                                      k[y.subLanguage]
+                                      k[y.subLanguage],
                                   )),
                                       (k[y.subLanguage] = e.top);
                               } else
@@ -435,7 +435,7 @@ var hljs = (function () {
                                       A,
                                       y.subLanguage.length
                                           ? y.subLanguage
-                                          : null
+                                          : null,
                                   );
                               y.relevance > 0 && (I += e.relevance),
                                   O.addSublanguage(e.emitter, e.language);
@@ -504,7 +504,7 @@ var hljs = (function () {
                                 r.endSameAsBegin &&
                                 (r.endRe = RegExp(
                                     t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"),
-                                    "m"
+                                    "m",
                                 )),
                             r.skip
                                 ? (A += t)
@@ -521,7 +521,7 @@ var hljs = (function () {
                             i +
                             '" for mode "' +
                             (y.className || "<unnamed>") +
-                            '"'
+                            '"',
                     );
                     throw ((e.mode = y), e);
                 }
@@ -571,7 +571,7 @@ var hljs = (function () {
                 if ("illegal" === r.type && "" === i) return 1;
                 if (B > 1e5 && B > 3 * r.index)
                     throw Error(
-                        "potential infinite loop, way more iterations than matches"
+                        "potential infinite loop, way more iterations than matches",
                     );
                 return (A += i), i.length;
             }
@@ -587,7 +587,7 @@ var hljs = (function () {
                             d(n),
                             "m" +
                                 (e.case_insensitive ? "i" : "") +
-                                (t ? "g" : "")
+                                (t ? "g" : ""),
                         );
                     }
                     class t {
@@ -638,7 +638,7 @@ var hljs = (function () {
                                             }
                                             (a += o.substring(0, l.index)),
                                                 (o = o.substring(
-                                                    l.index + l[0].length
+                                                    l.index + l[0].length,
                                                 )),
                                                 "\\" === l[0][0] && l[1]
                                                     ? (a += "\\" + (+l[1] + s))
@@ -649,7 +649,7 @@ var hljs = (function () {
                                     }
                                     return a;
                                 })(e),
-                                !0
+                                !0,
                             )),
                                 (this.lastIndex = 0);
                         }
@@ -658,7 +658,7 @@ var hljs = (function () {
                             const n = this.matcherRe.exec(e);
                             if (!n) return null;
                             const t = n.findIndex(
-                                    (e, n) => n > 0 && void 0 !== e
+                                    (e, n) => n > 0 && void 0 !== e,
                                 ),
                                 r = this.matchIndexes[t];
                             return n.splice(0, t), Object.assign(n, r);
@@ -712,7 +712,7 @@ var hljs = (function () {
                     }
                     if (e.contains && e.contains.includes("self"))
                         throw Error(
-                            "ERR: contains `self` is not supported at the top-level of a language.  See documentation."
+                            "ERR: contains `self` is not supported at the top-level of a language.  See documentation.",
                         );
                     return (function t(s, o) {
                         const l = s;
@@ -731,11 +731,11 @@ var hljs = (function () {
                                     return (
                                         "string" == typeof e
                                             ? r("keyword", e)
-                                            : Object.keys(e).forEach(function (
-                                                  n
-                                              ) {
-                                                  r(n, e[n]);
-                                              }),
+                                            : Object.keys(e).forEach(
+                                                  function (n) {
+                                                      r(n, e[n]);
+                                                  },
+                                              ),
                                         t
                                     );
                                     function r(e, r) {
@@ -749,12 +749,12 @@ var hljs = (function () {
                             s.lexemes && c)
                         )
                             throw Error(
-                                "ERR: Prefer `keywords.$pattern` to `mode.lexemes`, BOTH are not allowed. (see mode reference) "
+                                "ERR: Prefer `keywords.$pattern` to `mode.lexemes`, BOTH are not allowed. (see mode reference) ",
                             );
                         return (
                             (l.keywordPatternRe = n(
                                 s.lexemes || c || /\w+/,
-                                !0
+                                !0,
                             )),
                             o &&
                                 (s.beginKeywords &&
@@ -783,15 +783,18 @@ var hljs = (function () {
                                             e.variants &&
                                                 !e.cached_variants &&
                                                 (e.cached_variants =
-                                                    e.variants.map(function (
-                                                        n
-                                                    ) {
-                                                        return r(
-                                                            e,
-                                                            { variants: null },
-                                                            n
-                                                        );
-                                                    })),
+                                                    e.variants.map(
+                                                        function (n) {
+                                                            return r(
+                                                                e,
+                                                                {
+                                                                    variants:
+                                                                        null,
+                                                                },
+                                                                n,
+                                                            );
+                                                        },
+                                                    )),
                                             e.cached_variants
                                                 ? e.cached_variants
                                                 : (function e(n) {
@@ -811,7 +814,7 @@ var hljs = (function () {
                                                 : e
                                         );
                                     })("self" === e ? s : e);
-                                })
+                                }),
                             )),
                             s.contains.forEach(function (e) {
                                 t(e, l);
@@ -824,7 +827,7 @@ var hljs = (function () {
                                         n.addRule(e.begin, {
                                             rule: e,
                                             type: "begin",
-                                        })
+                                        }),
                                     ),
                                     e.terminator_end &&
                                         n.addRule(e.terminator_end, {
@@ -944,7 +947,7 @@ var hljs = (function () {
                               : e
                           : f.tabReplace
                           ? e.replace(/\t/g, f.tabReplace)
-                          : e
+                          : e,
                   )
                 : e;
         }
@@ -961,7 +964,7 @@ var hljs = (function () {
                             (console.warn(g.replace("{}", t[1])),
                             console.warn(
                                 "Falling back to no-highlight mode for this block.",
-                                e
+                                e,
                             )),
                         r ? t[1] : "no-highlight"
                     );
@@ -1054,8 +1057,8 @@ var hljs = (function () {
                         (console.error(
                             "Language definition for '{}' could not be registered.".replace(
                                 "{}",
-                                e
-                            )
+                                e,
+                            ),
                         ),
                         !l)
                     )
@@ -1078,8 +1081,8 @@ var hljs = (function () {
                 throw Error(
                     "The '{}' language is required, but not loaded.".replace(
                         "{}",
-                        e
-                    )
+                        e,
+                    ),
                 );
             },
             autoDetection: I,
@@ -1224,7 +1227,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "nginx",
@@ -1329,7 +1332,7 @@ hljs.registerLanguage(
                 illegal: "[^\\s\\}]",
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "csharp",
@@ -1541,7 +1544,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "perl",
@@ -1681,7 +1684,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "swift",
@@ -1786,7 +1789,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "makefile",
@@ -1853,7 +1856,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "css",
@@ -1971,7 +1974,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "xml",
@@ -2113,7 +2116,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "bash",
@@ -2192,7 +2195,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "c-like",
@@ -2386,7 +2389,7 @@ hljs.registerLanguage(
                 exports: { preprocessor: s, strings: a, keywords: l },
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "coffeescript",
@@ -2505,7 +2508,7 @@ hljs.registerLanguage(
                     "SyntaxError",
                     "TypeError",
                     "URIError",
-                ]
+                ],
             );
         return function (r) {
             var t = {
@@ -2527,7 +2530,7 @@ hljs.registerLanguage(
                             (
                                 (e) => (n) =>
                                     !e.includes(n)
-                            )(["var", "const", "let", "function", "static"])
+                            )(["var", "const", "let", "function", "static"]),
                         )
                         .join(" "),
                     literal: n.concat(["yes", "no", "on", "off"]).join(" "),
@@ -2658,7 +2661,7 @@ hljs.registerLanguage(
                 ]),
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "ruby",
@@ -2824,7 +2827,7 @@ hljs.registerLanguage(
                 contains: r.concat(g).concat(d),
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "yaml",
@@ -2944,7 +2947,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "d",
@@ -3027,7 +3030,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "properties",
@@ -3084,7 +3087,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "http",
@@ -3135,7 +3138,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "haskell",
@@ -3239,7 +3242,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "handlebars",
@@ -3250,7 +3253,7 @@ hljs.registerLanguage(
                 .map((e) =>
                     (function (e) {
                         return e ? ("string" == typeof e ? e : e.source) : null;
-                    })(e)
+                    })(e),
                 )
                 .join("");
         }
@@ -3272,7 +3275,7 @@ hljs.registerLanguage(
                     s,
                     "|",
                     /\.|\//,
-                    ")+"
+                    ")+",
                 ),
                 r = e("(", t, "|", s, ")(?==)"),
                 l = { begin: i, lexemes: /[\w.\/]+/ },
@@ -3392,7 +3395,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "rust",
@@ -3484,7 +3487,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "cpp",
@@ -3499,7 +3502,7 @@ hljs.registerLanguage(
                 t
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "ini",
@@ -3572,7 +3575,7 @@ hljs.registerLanguage(
                             "(\\s*\\.\\s*",
                             g,
                             ")*",
-                            n("(?=", /\s*=\s*[^#\s]/, ")")
+                            n("(?=", /\s*=\s*[^#\s]/, ")"),
                         ),
                         className: "attr",
                         starts: { end: /$/, contains: [i, c, r, t, l, s] },
@@ -3580,7 +3583,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "objectivec",
@@ -3660,7 +3663,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "apache",
@@ -3727,7 +3730,7 @@ hljs.registerLanguage(
                 illegal: /\S/,
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "java",
@@ -3765,17 +3768,17 @@ hljs.registerLanguage(
                                 s(
                                     a(r("a-fA-F0-9"), /\./, r("a-fA-F0-9")),
                                     a(r("a-fA-F0-9"), /\.?/),
-                                    a(/\./, r("a-fA-F0-9"))
+                                    a(/\./, r("a-fA-F0-9")),
                                 ),
                                 /([pP][+-]?(\d+))?/,
-                                /[fFdDlL]?/
+                                /[fFdDlL]?/,
                             ),
                         },
                         {
                             begin: a(
                                 /\b/,
                                 s(a(/\d*\./, r("\\d")), r("\\d")),
-                                /[eE][+-]?[\d]+[dDfF]?/
+                                /[eE][+-]?[\d]+[dDfF]?/,
                             ),
                         },
                         {
@@ -3784,7 +3787,7 @@ hljs.registerLanguage(
                                 r(/\d/),
                                 n(/\.?/),
                                 n(r(/\d/)),
-                                /[dDfFlL]?/
+                                /[dDfFlL]?/,
                             ),
                         },
                     ],
@@ -3860,7 +3863,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "x86asm",
@@ -3921,7 +3924,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "kotlin",
@@ -4123,7 +4126,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "armasm",
@@ -4193,7 +4196,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "go",
@@ -4250,7 +4253,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "diff",
@@ -4287,7 +4290,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "python",
@@ -4411,7 +4414,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "shell",
@@ -4430,7 +4433,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "scala",
@@ -4533,7 +4536,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "julia",
@@ -4606,7 +4609,7 @@ hljs.registerLanguage(
                 a
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "php-template",
@@ -4642,7 +4645,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "scss",
@@ -4739,7 +4742,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "r",
@@ -4799,7 +4802,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "sql",
@@ -4851,7 +4854,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "c",
@@ -4861,7 +4864,7 @@ hljs.registerLanguage(
             var n = e.getLanguage("c-like").rawDefinition();
             return (n.name = "C"), (n.aliases = ["c", "h"]), n;
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "json",
@@ -4907,7 +4910,7 @@ hljs.registerLanguage(
                 { name: "JSON", contains: t, keywords: e, illegal: "\\S" }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "python-repl",
@@ -4931,7 +4934,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "markdown",
@@ -5072,7 +5075,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "javascript",
@@ -5191,7 +5194,7 @@ hljs.registerLanguage(
                     "SyntaxError",
                     "TypeError",
                     "URIError",
-                ]
+                ],
             );
         function s(e) {
             return r("(?=", e, ")");
@@ -5201,7 +5204,7 @@ hljs.registerLanguage(
                 .map((e) =>
                     (function (e) {
                         return e ? ("string" == typeof e ? e : e.source) : null;
-                    })(e)
+                    })(e),
                 )
                 .join("");
         }
@@ -5337,9 +5340,9 @@ hljs.registerLanguage(
                             s(
                                 r(
                                     /(((\/\/.*)|(\/\*(.|\n)*\*\/))\s*)*/,
-                                    i + "\\s*:"
-                                )
-                            )
+                                    i + "\\s*:",
+                                ),
+                            ),
                         ),
                         relevance: 0,
                         contains: [
@@ -5451,7 +5454,7 @@ hljs.registerLanguage(
                 illegal: /#(?!!)/,
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "typescript",
@@ -5570,7 +5573,7 @@ hljs.registerLanguage(
                     "SyntaxError",
                     "TypeError",
                     "URIError",
-                ]
+                ],
             );
         return function (r) {
             var t = {
@@ -5780,7 +5783,7 @@ hljs.registerLanguage(
                 ],
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "plaintext",
@@ -5793,7 +5796,7 @@ hljs.registerLanguage(
                 disableAutodetect: !0,
             };
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "less",
@@ -5836,7 +5839,7 @@ hljs.registerLanguage(
                     returnBegin: !0,
                     excludeEnd: !0,
                 },
-                { className: "meta", begin: "!important" }
+                { className: "meta", begin: "!important" },
             );
             var c = s.concat({ begin: "{", end: "}", contains: a }),
                 l = {
@@ -5921,7 +5924,7 @@ hljs.registerLanguage(
                     g,
                     d,
                     o,
-                    b
+                    b,
                 ),
                 {
                     name: "Less",
@@ -5931,7 +5934,7 @@ hljs.registerLanguage(
                 }
             );
         };
-    })()
+    })(),
 );
 hljs.registerLanguage(
     "lua",
@@ -5986,5 +5989,5 @@ hljs.registerLanguage(
                 ]),
             };
         };
-    })()
+    })(),
 );
